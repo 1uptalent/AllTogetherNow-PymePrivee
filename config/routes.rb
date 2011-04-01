@@ -1,4 +1,6 @@
 Pymeprivee::Application.routes.draw do
+  resources :shops
+
   get "home/index"
 
   devise_for :users
