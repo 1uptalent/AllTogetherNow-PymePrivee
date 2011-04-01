@@ -6,7 +6,7 @@ describe ShopsController do
   
   context "GET: show" do
     
-    let(:shop) { mock_model(Shop, :id => 1, :name => "ShopName", :description => "1\n2") }
+    let(:shop) { stub_model(Shop, :id => 1, :name => "ShopName", :description => "1\n2") }
     
     before do
       Shop.stub(:find).with("1").and_return(shop)
