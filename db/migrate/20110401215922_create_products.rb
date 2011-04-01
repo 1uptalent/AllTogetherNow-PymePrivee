@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :description
       t.decimal :cost, :precision => 10, :scale => 2
       t.decimal :tax,  :precision => 5,  :scale => 3
+      t.references :shop
 
       t.timestamps
     end

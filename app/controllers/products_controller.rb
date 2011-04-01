@@ -40,6 +40,7 @@ class ProductsController < ApplicationController
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
+    @product.shop = @shop
 
     respond_to do |format|
       if @product.save
@@ -76,7 +77,7 @@ class ProductsController < ApplicationController
   protected
   
   def user_must_be_owner
-    raise User::Forbidden unless current_user == @shop.owner
+    raise User::Forbidden unless current_user == @shop.user
   end
   
   def load_shop

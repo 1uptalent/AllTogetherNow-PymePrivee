@@ -7,7 +7,7 @@ require 'spec_helper'
 describe ProductsController do
 
   let(:owner) { mock_model(User, :id => 33) }
-  let(:shop)  { mock_model(Shop, :id => 3, :owner => owner) }
+  let(:shop)  { mock_model(Shop, :id => 3, :user => owner) }
   
   before { Shop.stub(:find).with("3").and_return(shop) }
 
