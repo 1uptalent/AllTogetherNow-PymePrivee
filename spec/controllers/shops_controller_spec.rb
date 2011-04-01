@@ -4,6 +4,31 @@ describe ShopsController do
   User.delete_all
   user = User.new(:email => "foo@bar.com", :password => "abc123", :password_confirmation => "abc123") { |u| u.save! }
   
+  context "GET: show" do
+    
+    let(:shop) { mock_model(Shop, :id => 1, :name => "ShopName", :description => "1\n2") }
+    
+    before do
+      Shop.stub(:find).with("1").and_return(shop)
+      get :show, :id => "1"
+    end
+    
+    it "should be public" do
+      should respond_with :ok
+    end
+    
+    context "response" do
+      subject { response.body }
+      
+      it "should display the name" do
+        should match "ShopName"
+      end
+    
+      it "should format the description" do
+        should match %r{<p>1</p>.*<p>2</p>}m
+      end
+    end
+  end
   
   context "GET: new" do
     

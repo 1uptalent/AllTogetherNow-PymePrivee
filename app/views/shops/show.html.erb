@@ -1,0 +1,9 @@
+<div id="shop">
+  <h1><%= @shop.name %></h1>
+  <div class="address"></div>
+  <div class="description">
+    <% @shop.description.split("\n").each do |p| -%>
+      <p><%= p %></p>
+    <%- end -%>
+  </div>
+</div>
