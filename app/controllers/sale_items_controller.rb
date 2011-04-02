@@ -91,4 +91,8 @@ class SaleItemsController < ApplicationController
       render :action => :add_product
     end
   end
+  
+  def current
+    redirect_to [@shop, @shop.sale_items.current]
+  end
 end

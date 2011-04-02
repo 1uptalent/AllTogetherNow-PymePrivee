@@ -30,6 +30,9 @@ describe SaleItemsController do
     it "recognizes and generates #destroy" do
       { :delete => "/shops/13/sale_items/1" }.should route_to(:controller => "sale_items", :action => "destroy", :id => "1", :shop_id => "13")
     end
-
+    
+    it "recognizes and generates #current" do
+      { :get => "/shops/13/sale_items/current" }.should route_to(:controller => "sale_items", :action => "current", :shop_id => "13")
+    end
   end
 end
