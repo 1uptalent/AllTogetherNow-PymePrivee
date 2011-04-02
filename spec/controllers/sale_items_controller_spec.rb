@@ -182,5 +182,22 @@ describe SaleItemsController do
         response.should redirect_to(shop_sale_items_url(shop.id))
       end
     end
+  
+    describe "GET add_product" do
+      before  do
+        SaleItem.stub(:find).and_return(mock_sale_item)
+      end
+      
+      it "retrieves the avaliable products" do
+        shop=mock(:shop)
+        mock_sale_item.stub(:shop).and_return(shop)
+        shop.should_receive(:products).and_return([])
+        get_without_shop_id :add_product, :id => "1"
+      end
+      
+      xit "assigns the list of products" do
+        
+      end
+    end
   end
 end
