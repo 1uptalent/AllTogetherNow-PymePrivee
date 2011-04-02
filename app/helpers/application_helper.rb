@@ -14,7 +14,9 @@ module ApplicationHelper
   
   def the_owner_of(shop) 
     if current_user == shop.user
-      yield
+      content_tag :div, :class => "owner_only" do 
+        yield
+      end
     end
   end
   
