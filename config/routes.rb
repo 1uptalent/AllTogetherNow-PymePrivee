@@ -10,6 +10,13 @@ Pymeprivee::Application.routes.draw do
   end
 
   get "home/index"
+  
+  resources :payments do
+    member do
+      get :confirm
+      post :complete
+    end
+  end
 
   devise_for :users
 

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110402160216) do
+ActiveRecord::Schema.define(:version => 20110402201010) do
+
+  create_table "payments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sale_item_id"
+    t.string   "concept"
+    t.decimal  "amount",       :precision => 10, :scale => 2
+    t.string   "status",                                      :default => "user_requested"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", :force => true do |t|
     t.string   "name"
