@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "sale_items/index.html.erb" do
   before(:each) do
+    assign(:shop, mock_model(Shop))
     assign(:sale_items, [
       stub_model(SaleItem,
         :name => "Name",

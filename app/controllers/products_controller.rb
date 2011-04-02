@@ -79,11 +79,7 @@ class ProductsController < ApplicationController
   def user_must_be_owner
     raise User::Forbidden unless current_user == @shop.user
   end
-  
-  def load_shop
-    @shop = Shop.find(params[:shop_id])
-  end
-  
+    
   def load_product
     @product = Product.find(params[:id])
   end

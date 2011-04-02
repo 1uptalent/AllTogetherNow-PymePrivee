@@ -1,9 +1,8 @@
 Pymeprivee::Application.routes.draw do
 
-  resources :sale_items
-
   resources :shops do
     resources :products
+    resources :sale_items
   end
 
   get "home/index"

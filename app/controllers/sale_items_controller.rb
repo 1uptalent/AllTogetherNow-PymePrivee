@@ -1,4 +1,8 @@
 class SaleItemsController < ApplicationController
+  
+  before_filter :authenticate_user!
+  before_filter :load_shop
+  
   # GET /sale_items
   # GET /sale_items.xml
   def index
@@ -6,7 +10,6 @@ class SaleItemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @sale_items }
     end
   end
 
@@ -17,7 +20,6 @@ class SaleItemsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @sale_item }
     end
   end
 
@@ -28,7 +30,6 @@ class SaleItemsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @sale_item }
     end
   end
 
@@ -41,14 +42,12 @@ class SaleItemsController < ApplicationController
   # POST /sale_items.xml
   def create
     @sale_item = SaleItem.new(params[:sale_item])
-
+    @sale_item.shop = @shop
     respond_to do |format|
       if @sale_item.save
-        format.html { redirect_to(@sale_item, :notice => 'Sale item was successfully created.') }
-        format.xml  { render :xml => @sale_item, :status => :created, :location => @sale_item }
+        format.html { redirect_to([@shop, @sale_item], :notice => 'Sale item was successfully created.') }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @sale_item.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -60,11 +59,9 @@ class SaleItemsController < ApplicationController
 
     respond_to do |format|
       if @sale_item.update_attributes(params[:sale_item])
-        format.html { redirect_to(@sale_item, :notice => 'Sale item was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to([@shop, @sale_item], :notice => 'Sale item was successfully updated.') }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @sale_item.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -76,8 +73,7 @@ class SaleItemsController < ApplicationController
     @sale_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to(sale_items_url) }
-      format.xml  { head :ok }
+      format.html { redirect_to(shop_sale_items_url(@shop)) }
     end
   end
 end

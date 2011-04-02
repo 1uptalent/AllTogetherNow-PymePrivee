@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe "sale_items/new.html.erb" do
+  let(:shop) { mock_model(Shop) }
+  
   before(:each) do
+    assign(:shop, shop)
     assign(:sale_item, stub_model(SaleItem,
       :name => "MyString",
       :description => "MyText",
@@ -14,7 +17,7 @@ describe "sale_items/new.html.erb" do
     render
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "form", :action => sale_items_path, :method => "post" do
+    assert_select "form", :action => shop_sale_items_path(shop), :method => "post" do
       assert_select "input#sale_item_name", :name => "sale_item[name]"
       assert_select "textarea#sale_item_description", :name => "sale_item[description]"
       assert_select "input#sale_item_total_cost", :name => "sale_item[total_cost]"

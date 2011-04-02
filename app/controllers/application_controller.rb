@@ -4,4 +4,11 @@ class ApplicationController < ActionController::Base
   rescue_from 'User::Forbidden' do
     render "forbidden", :status => :forbidden
   end
+  
+  #
+  # Helpers for laoding parent models
+  def load_shop
+    @shop = Shop.find(params[:shop_id])
+  end
+  
 end
