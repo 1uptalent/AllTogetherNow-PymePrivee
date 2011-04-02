@@ -17,7 +17,7 @@ class SaleItemsController < ApplicationController
   # GET /sale_items/1.xml
   def show
     if params[:id].blank?
-      @sale_item = @shop.sale_items.first
+      @sale_item = @shop.sale_items.current
     else
       @sale_item = SaleItem.find(params[:id])
     end
@@ -97,5 +97,9 @@ class SaleItemsController < ApplicationController
     else
       render :action => :add_product
     end
+  end
+  
+  def current
+    redirect_to [@shop, @shop.sale_items.current]
   end
 end

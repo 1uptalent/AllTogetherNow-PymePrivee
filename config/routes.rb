@@ -4,7 +4,9 @@ Pymeprivee::Application.routes.draw do
   post "/sale_items/:id/add_product" => "sale_items#update_products", :as => 'update_products_for_sale_item'
   resources :shops do
     resources :products
-    resources :sale_items
+    resources :sale_items do
+      collection { get :current }
+    end
   end
 
   get "home/index"
