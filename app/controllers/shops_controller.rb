@@ -1,10 +1,15 @@
 class ShopsController < ApplicationController
   
   before_filter :authenticate_user!, :except => :show
-  before_filter :load_shop, :except => [:new, :create]
-  before_filter :user_must_be_owner, :except => [:new, :create]
+  before_filter :load_shop, :except => [:new, :create, :my_shop]
+  before_filter :user_must_be_owner, :except => [:new, :create, :my_shop]
   
   def show
+  end
+
+  def my_shop
+    @shop = current_user.shop
+    render :show
   end
   
   def new

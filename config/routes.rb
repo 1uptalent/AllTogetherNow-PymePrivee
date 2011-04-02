@@ -3,11 +3,14 @@ Pymeprivee::Application.routes.draw do
   get "/sale_items/:id/add_product" => "sale_items#add_product", :as => 'add_product_to_sale_item'
   post "/sale_items/:id/add_product" => "sale_items#update_products", :as => 'update_products_for_sale_item'
   resources :shops do
+    collection { get :my_shop }
     resources :products
     resources :sale_items do
       collection { get :current }
     end
   end
+  
+  match "/my_shop" => redirect("/shops/my_shop"), :as => "user_root"
 
   get "home/index"
 
