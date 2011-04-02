@@ -17,10 +17,7 @@ ActiveRecord::Schema.define(:version => 20110401215922) do
     t.string   "description"
     t.decimal  "cost",        :precision => 10, :scale => 2
     t.decimal  "tax",         :precision => 5,  :scale => 3
-<<<<<<< HEAD
-=======
     t.integer  "shop_id"
->>>>>>> Model products and their tests
     t.datetime "created_at"
     t.datetime "updated_at"
   end
