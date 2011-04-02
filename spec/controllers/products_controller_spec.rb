@@ -26,6 +26,7 @@ describe ProductsController do
       Product.stub(:find).with("37") { mock_model(Product) }
       get :edit, :shop_id => "3", :id => "37"
       should respond_with :forbidden
+      
     end
     
   end
@@ -39,7 +40,10 @@ describe ProductsController do
     
     describe "GET index" do
       it "assigns all products as @products" do
-        Product.stub(:all) { [mock_product] }
+        other_product = mock_product(:name => "OPName", :description => "OPDesc", :cost => 623.45, :tax => 1.1)
+        Product.stub(:all) { [mock_product, other_product] }
+        products = mock("products", :all => [mock_product])
+        Product.stub(:where).with(:shop_id => 3) { products }
         get :index, :shop_id => "3"
         assigns(:products).should eq([mock_product])
       end
