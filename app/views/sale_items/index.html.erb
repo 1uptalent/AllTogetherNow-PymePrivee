@@ -1,0 +1,29 @@
+<h1>Listing sale_items</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Total cost</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sale_items.each do |sale_item| %>
+  <tr>
+    <td><%= sale_item.name %></td>
+    <td><%= sale_item.description %></td>
+    <td><%= "%.2f" % sale_item.total_cost %></td>
+    <td><%= "%.2f" % sale_item.price %></td>
+    <td><%= link_to 'Show', [@shop, sale_item] %></td>
+    <td><%= link_to 'Edit', edit_shop_sale_item_path(@shop, sale_item) %></td>
+    <td><%= link_to 'Destroy', [@shop, sale_item], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sale item', new_shop_sale_item_path(@shop) %>

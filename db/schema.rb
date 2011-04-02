@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20110402085545) do
     t.datetime "updated_at"
   end
 
+  create_table "sale_items", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "total_cost",  :precision => 10, :scale => 2
+    t.decimal  "price",       :precision => 10, :scale => 2
+    t.integer  "shop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "shops", :force => true do |t|
     t.string   "name"
     t.text     "description"
