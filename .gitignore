@@ -4,3 +4,6 @@ log/*.log
 tmp/
 public/system/logos
 .DS_Store
+pulic/stylesheets/.sass-cache/*
+*.swp
+

@@ -1,0 +1,197 @@
+@font-face {
+  font-family: 'Quicksand';
+  src: url("font/Quicksand_Light-webfont.eot?") format("eot"), url("font/Quicksand_Light-webfont.woff") format("woff"), url("font/Quicksand_Light-webfont.ttf") format("truetype"), url("font/Quicksand_Light-webfont.svg#webfontbpxkzhcL") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url("font/Quicksand_Bold-webfont.eot?") format("eot"), url("font/Quicksand_Bold-webfont.woff") format("woff"), url("font/Quicksand_Bold-webfont.ttf") format("truetype"), url("font/Quicksand_Bold-webfont.svg#webfontaEJ3th29") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline; }
+
+body {
+  color: #dfdfdf;
+  background: #242424;
+  font-family: 'Lucida Grande',Verdana,'Bitstream Vera Sans',Arial,sans-serif;
+  font-size: 11pt;
+  line-height: 24px; }
+
+h1 {
+  font-family: Quicksand;
+  font-size: 2.9em;
+  line-height: 45px; }
+
+a {
+  color: #ef2222;
+  text-decoration: underline; }
+  a:hover {
+    color: #ff3232;
+    text-shadow: 0px 0px 1px black; }
+
+p {
+  padding: 0; }
+
+.notice {
+  color: #242424;
+  opacity: 0.9;
+  background: #dfdfdf; }
+
+#main_header {
+  height: 30px;
+  padding: 1px 5%;
+  background: #141414; }
+  #main_header h1 {
+    display: inline;
+    font-size: 1.4em;
+    font-weight: 500;
+    line-height: 32px; }
+    #main_header h1 a {
+      color: #dfdfdf; }
+      #main_header h1 a:active {
+        color: #dfdfdf; }
+      #main_header h1 a:visited {
+        color: #dfdfdf; }
+      #main_header h1 a:hover {
+        color: #dfdfdf; }
+  #main_header ul.header_links {
+    float: right;
+    display: inline;
+    list-style: none; }
+    #main_header ul.header_links li {
+      float: right;
+      padding: 2px 15px; }
+  #main_header a {
+    font-family: Quicksand;
+    text-decoration: none;
+    font-weight: 400; }
+
+#main_wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1100px;
+  min-width: 850px;
+  overflow: hidden; }
+  #main_wrapper #title {
+    float: left;
+    margin: auto;
+    width: 34%;
+    font-family: Quicksand;
+    text-align: center; }
+    #main_wrapper #title h1 {
+      margin: 30px;
+      line-height: 35px;
+      font-size: 2.5em; }
+    #main_wrapper #title p {
+      margin: 15px 30px;
+      font-size: 1.2em;
+      font-weight: 300;
+      line-height: 26px; }
+  #main_wrapper #showcase {
+    width: 63%;
+    float: right;
+    text-align: right; }
+    #main_wrapper #showcase img {
+      margin: 10px; }
+  #main_wrapper #products_list {
+    padding: 40px 0px 15px 10px;
+    clear: both; }
+  #main_wrapper #shops_list {
+    padding: 15px 10px;
+    clear: both; }
+  #main_wrapper h2 {
+    color: #6f6f6f;
+    font-family: Quicksand;
+    font-size: 1.8em; }
+
+.devise {
+  width: 500px;
+  margin: 30px auto; }
+
+.input_form {
+  width: 500px;
+  margin: 30px auto; }
+
+form {
+  width: 550px;
+  padding-top: 10px;
+  padding-left: 10px; }
+  form #error_explanation {
+    color: white;
+    font-style: italic; }
+    form #error_explanation ul {
+      list-style: none;
+      margin-bottom: 10px; }
+  form .field_with_errors {
+    padding: 0; }
+    form .field_with_errors label {
+      text-shadow: 0px 0px 3px red; }
+    form .field_with_errors input[type=text] {
+      border: 1px solid red;
+      box-shadow: 0px 0px 10px red; }
+    form .field_with_errors input[type=password] {
+      border: 1px solid red;
+      box-shadow: 0px 0px 10px red; }
+  form label {
+    font-size: 1.2em; }
+  form textarea {
+    margin-bottom: 15px;
+    border: 0px;
+    border-radius: 2px;
+    width: 480px;
+    padding: 8px 10px;
+    font-size: 1.2em;
+    height: 120px; }
+  form input[type=text] {
+    margin-bottom: 15px;
+    border: 0px;
+    border-radius: 2px;
+    width: 480px;
+    padding: 8px 10px;
+    font-size: 1.2em; }
+  form input[type=password] {
+    margin-bottom: 15px;
+    border: 0px;
+    border-radius: 2px;
+    width: 480px;
+    padding: 8px 10px;
+    font-size: 1.2em; }
+  form input[type=submit] {
+    float: right;
+    margin-top: 10px;
+    margin-right: 50px;
+    color: #dfdfdf;
+    background: #ef2222;
+    border: 0px;
+    border-radius: 2px;
+    padding: 8px 16px;
+    font-size: 1.2em;
+    cursor: pointer; }
+  form input[type=file] {
+    margin-bottom: 15px;
+    border: 0px;
+    border-radius: 2px;
+    width: 480px;
+    padding: 8px 10px;
+    font-size: 1.2em; }
+
+.clear {
+  clear: both; }
