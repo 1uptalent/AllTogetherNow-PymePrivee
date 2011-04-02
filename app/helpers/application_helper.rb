@@ -12,6 +12,14 @@ module ApplicationHelper
     html.html_safe
   end
   
+  def the_owner_of(shop) 
+    if current_user == shop.user
+      content_tag :div, :class => "owner_only" do 
+        yield
+      end
+    end
+  end
+  
   protected
   
   def error_messages_for_a_single_model(model)

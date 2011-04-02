@@ -6,9 +6,10 @@ require 'spec_helper'
 
 describe SaleItemsController do
   
-  let(:shop) { mock_model(Shop, :id => 13)}
+
   let(:owner) { mock_model(User, :id => 33) }
-  
+  let(:shop) { mock_model(Shop, :id => 13, :user => owner)}
+    
   before(:each) { Shop.stub(:find).and_return shop }
   
   %w{delete post put get}.each do |method|
@@ -26,7 +27,7 @@ describe SaleItemsController do
     @mock_sale_item ||= mock_model(SaleItem, stubs).as_null_object
   end
 
-  describe "when authenticated" do
+  describe "when authenticated with the owner" do
     
     before do
       User.stub(:find).and_return(owner)
