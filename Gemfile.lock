@@ -48,6 +48,9 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     mysql2 (0.2.7)
+    paperclip (2.3.8)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     rack (1.2.2)
     rack-mount (0.6.14)
@@ -96,6 +99,7 @@ DEPENDENCIES
   devise
   jquery-rails
   mysql2
+  paperclip
   rails (= 3.0.5)
   rspec-rails
   shoulda

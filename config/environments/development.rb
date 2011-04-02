@@ -23,5 +23,7 @@ Pymeprivee::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end
 

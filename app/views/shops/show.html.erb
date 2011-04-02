@@ -1,9 +1,15 @@
 <div id="shop">
   <h1><%= @shop.name %></h1>
+  <p><%= link_to "edit", edit_shop_path(@shop)%></p>
   <div class="address"><%= @shop.address %></div>
   <div class="description">
     <% @shop.description.split("\n").each do |p| -%>
       <p><%= p %></p>
     <%- end -%>
+  </div>
+  <div class="logos">
+    <%= image_tag @shop.logo.url %>
+    <%= image_tag @shop.logo.url(:medium) %>
+    <%= image_tag @shop.logo.url(:thumb) %>
   </div>
 </div>
