@@ -6,4 +6,6 @@ describe Shop do
   end
   it { should validate_presence_of :user }
   it { should validate_presence_of :name }
+  it { should have_many :products }
+  it { should have_many :sale_items }
 end
