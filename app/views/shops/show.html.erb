@@ -1,6 +1,8 @@
 <div id="shop">
   <h1><%= @shop.name %></h1>
+  <%- the_owner_of(@shop) do -%>
   <p><%= link_to "edit", edit_shop_path(@shop)%></p>
+  <%- end -%>
   <div class="address"><%= @shop.address %></div>
   <div class="description">
     <% @shop.description.split("\n").each do |p| -%>
