@@ -9,6 +9,7 @@ class ShopsController < ApplicationController
 
   def my_shop
     @shop = current_user.shop
+    redirect_to new_shop_path and return if @shop.nil?
     render :show
   end
   
