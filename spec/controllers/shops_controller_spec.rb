@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe ShopsController do
-  User.delete_all
-  user = User.new(:email => "foo@bar.com", :password => "abc123", :password_confirmation => "abc123") { |u| u.save! }
+  let(:user) { mock_model(User, :id => 33) }
   
   context "GET: show" do
     
@@ -42,6 +41,7 @@ describe ShopsController do
     
     context "with an authenticated user" do
       before(:each) do
+        User.stub(:find).and_return(user)
         sign_in user
         get :new
       end
@@ -62,6 +62,7 @@ describe ShopsController do
     context "with an authenticated user" do
       let(:name) { "nombre negocio" }
       before(:each) do
+        User.stub(:find).and_return(user)
         sign_in user
         post :create, :shop=> {:name => name}
       end
