@@ -20,6 +20,12 @@
   <%= @sale_item.price %>
 </p>
 
+<p>
+  <%- @sale_item.products.each do |p| -%>
+    <%=p.name%>
+  <%- end -%>
+</p>
+<%= link_to 'Add product', add_product_to_sale_item_path(@sale_item) %>
 
 <%= link_to 'Edit', edit_shop_sale_item_path(@shop, @sale_item) %> |
 <%= link_to 'Back', shop_sale_items_path(@shop) %>

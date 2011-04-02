@@ -1,7 +1,7 @@
 class SaleItemsController < ApplicationController
   
   before_filter :authenticate_user!
-  before_filter :load_shop
+  before_filter :load_shop, :except => [:add_product, :update_products]
   
   # GET /sale_items
   # GET /sale_items.xml
@@ -74,6 +74,21 @@ class SaleItemsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(shop_sale_items_url(@shop)) }
+    end
+  end
+  
+  def add_product
+    @sale_item = SaleItem.find(params[:id])
+    @products = @sale_item.shop.products
+  end
+  
+  def update_products
+    @sale_item = SaleItem.find(params[:id])
+    @sale_item.product_ids = params[:product_ids]
+    if @sale_item.save
+      redirect_to [@sale_item.shop, @sale_item]
+    else
+      render :action => :add_product
     end
   end
 end

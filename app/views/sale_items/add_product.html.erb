@@ -1,0 +1,11 @@
+<%= form_for @sale_item, :url => update_products_for_sale_item_path(@sale_item), :html => { :method => "post"} do |f| %>
+  <ul>
+  <% @products.each do |p| %>
+    <li><%= check_box_tag "product_ids[]", p.id, 
+        @sale_item.product_ids.include?(p.id), :id => "check_product_#{p.id}"  %>
+      <%= label_tag "check_product_#{p.id}", p.name %></li>
+  <% end %>
+  </ul>
+  <p>Or, <%= link_to "create a new product", new_shop_product_path(@sale_item.shop) %></p>
+  <p><%= f.submit "Submit", :disable_with => 'Submiting...' %></p>
+<% end %>
