@@ -12,6 +12,9 @@ gem 'devise'
 
 gem "paperclip"
 
+#Improved CSS
+gem "haml"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
