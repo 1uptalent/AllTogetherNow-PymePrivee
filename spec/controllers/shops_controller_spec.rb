@@ -17,6 +17,7 @@ describe ShopsController do
     end
     
     context "response" do
+      render_views
       subject { response.body }
       
       it "should display the name" do
