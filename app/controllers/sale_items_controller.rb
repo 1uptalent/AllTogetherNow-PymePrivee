@@ -1,6 +1,6 @@
 class SaleItemsController < ApplicationController
   
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => :show
   before_filter :load_shop
   
   # GET /sale_items
@@ -20,6 +20,7 @@ class SaleItemsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.json # show.json.erb
     end
   end
 
