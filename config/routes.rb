@@ -1,5 +1,7 @@
 Pymeprivee::Application.routes.draw do
 
+  resources :sale_items
+
   resources :shops do
     resources :products
   end

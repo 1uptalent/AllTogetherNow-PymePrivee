@@ -10,17 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110401215922) do
+ActiveRecord::Schema.define(:version => 20110402054458) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
     t.string   "description"
     t.decimal  "cost",        :precision => 10, :scale => 2
     t.decimal  "tax",         :precision => 5,  :scale => 3
-<<<<<<< HEAD
-=======
     t.integer  "shop_id"
->>>>>>> Model products and their tests
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sale_items", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "total_cost",  :precision => 10, :scale => 2
+    t.decimal  "price",       :precision => 10, :scale => 2
+    t.integer  "shop_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
