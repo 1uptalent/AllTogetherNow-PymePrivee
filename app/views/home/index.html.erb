@@ -1,3 +1,32 @@
 <h1>Home#index</h1>
 <p><%= link_to "Sign up", new_user_registration_path %></p>
 <p><%= link_to "Log in", new_user_session_path %></p>
+<div id="products_list">
+  <h2>Nuevos Productos</h2>
+  <ul>
+  <% @products.each do |product| %>
+    <li>
+      <p><%= product.name%>
+      </p>
+      <div>
+        [imagen del producto cuando lo tenga]
+      <div>
+      <p>by <%= link_to product.shop.name, shop_path(product.shop)%><%= image_tag product.shop.logo.url(:thumb) %>
+      </p>
+    </li>
+  <%- end -%>
+  </ul>
+</div>
+<div id="shops_list">
+  <h2>Nuevos Comercios</h2>
+  <ul>
+  <% @shops.each do |shop| %>
+    <li>
+      <p><%= link_to shop.name, shop_products_path(shop)%></p>
+      <div>
+        <%= image_tag shop.logo.url(:medium) %>
+      <div>
+    </li>
+  <%- end -%>
+  </ul>
+</div>
