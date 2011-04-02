@@ -9,6 +9,11 @@ class SaleItem < ActiveRecord::Base
     shop.logo
   end
 
+  def current?
+    now = Time.now
+    valid_from.to_time <= now && now < valid_until.to_time
+  end
+
   def self.current(date=Date.today)
     where("valid_from <= :now and valid_until > :now", :now => date.to_date).first
   end
