@@ -25,6 +25,15 @@ class ShopsController < ApplicationController
     render :new
   end
   
+  def update
+    @shop.update_attributes(params[:shop])
+    if @shop.save
+      redirect_to shop_path(@shop)
+    else
+      render :new
+    end
+  end
+  
   protected
 
   def load_shop

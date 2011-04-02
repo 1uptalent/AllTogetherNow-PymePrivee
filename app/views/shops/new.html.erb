@@ -1,5 +1,5 @@
 <%= error_messages_for(@shop) %>
-<%= form_for @shop do |f| -%>
+<%= form_for @shop, :html => { :multipart => true } do |f| -%>
 <p>
   <%= f.label :name, "Name" %>
   <%= f.text_field :name %>
@@ -11,6 +11,10 @@
 <p>
   <%= f.label :address, "Address" %>
   <%= f.text_area :address %>
+</p>
+<p>
+  <%= f.label :logo, "logo" %>
+  <%= f.file_field :logo %>
 </p>
 <p>
   <%= f.submit "Submit", :disable_with => 'Submiting...' %>
