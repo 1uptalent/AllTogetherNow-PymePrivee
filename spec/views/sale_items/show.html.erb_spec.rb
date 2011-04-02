@@ -7,7 +7,9 @@ describe "sale_items/show.html.erb" do
       :name => "Name",
       :description => "MyText",
       :total_cost => "9.99",
-      :price => "12.99"
+      :price => "12.99",
+      :valid_from => "2009-01-01".to_date,
+      :valid_until => Date.tomorrow
     ))
   end
 
@@ -29,6 +31,19 @@ describe "sale_items/show.html.erb" do
       render
       rendered.should match(/Jam/) 
     end
+  end
+  
+  context "when not current" do
+    before do
+      @sale_item.stub(:valid_until).and_return(Date.today)
+    end
+    
+    it "should render a warning" do
+      render
+      assert_select "div[class=not_current]", :count => 1
+    end
+    
+    it "should not render the buy button"
   end
   
   context "with the shop owner's sale item" do

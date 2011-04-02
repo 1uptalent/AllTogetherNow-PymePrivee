@@ -25,7 +25,22 @@
     <%=p.name%>
   <%- end -%>
 </p>
+<%- unless @sale_item.current? -%>
+<div class="not_current">
+  <% if @sale_item.valid_until <= Date.today %>
+    <p>This items are no longer for sale, sorry.</p>
+  <%- else -%>
+    <p>This item will be on sale starting on <%= l(@sale_item.valid_from, :format => :long) %></p>
+  <%- end -%>
+  <%- if @shop.sale_items.current.present? -%>
+  <p>Go to the <%= link_to "current sale", current_shop_sale_items_path(@shop) %>
+    on <%= link_to @shop.name, @shop %></p>
+  <%- end -%>
+</div>
+<%- end -%>
+<%= the_owner_of(@shop) do -%>
 <%= link_to 'Add product', add_product_to_sale_item_path(@sale_item) %>
 
 <%= link_to 'Edit', edit_shop_sale_item_path(@shop, @sale_item) %> |
 <%= link_to 'Back', shop_sale_items_path(@shop) %>
+<%- end -%>
