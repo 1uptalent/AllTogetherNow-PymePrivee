@@ -1,9 +1,10 @@
 class ShopsController < ApplicationController
   
   before_filter :authenticate_user!, :except => :show
+  before_filter :load_shop, :except => [:new, :create]
+  before_filter :user_must_be_owner, :except => [:new, :create]
   
   def show
-    @shop = Shop.find(params[:id])
   end
   
   def new
@@ -19,4 +20,19 @@ class ShopsController < ApplicationController
       render :new
     end
   end
+  
+  def edit
+    render :new
+  end
+  
+  protected
+
+  def load_shop
+    @shop = Shop.find(params[:id])
+  end
+  
+  def user_must_be_owner
+    raise User::Forbidden unless current_user == @shop.user
+  end
+  
 end

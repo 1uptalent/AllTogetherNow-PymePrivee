@@ -15,6 +15,21 @@ describe ProductsController do
     @mock_product ||= mock_model(Product, stubs).as_null_object
   end
 
+  describe "when authenticated is not the owner" do
+    let(:other_user) { mock_model(User, :id => 55) } 
+    before do
+      User.stub(:find).and_return(other_user)
+      sign_in other_user
+    end
+    
+    it "should not allow to edit the product" do
+      Product.stub(:find).with("37") { mock_model(Product) }
+      get :edit, :shop_id => "3", :id => "37"
+      should respond_with :forbidden
+    end
+    
+  end
+
   describe "when authenticated" do
     
     before do
