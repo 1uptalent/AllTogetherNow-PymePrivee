@@ -1,0 +1,43 @@
+.description-layer {
+	top: 0px;
+	left: 0px;
+	padding: 5px;
+	height: 100px;
+	width: 50%;
+	background-color: black;
+	color: white;
+	z-index: 1;
+	/*position: absolute;*/
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+	filter: alpha(opacity = 80);
+	-moz-opacity: 0.8;
+	overflow: hidden;
+	font-family: sans-serif;
+	position: absolute;
+}
+.zoom-control{
+	top: 0px;
+	margin-left: 454px;
+	color: white;
+	z-index: 1;
+	position: absolute;
+	overflow: hidden;
+	font-family: sans-serif;
+	position: absolute;
+}
+.controls-layer {
+	left: 0px;
+	top: -25px;
+	padding: 0px;
+	font-family: sans-serif;
+	background-color: blue;
+	color: #AAFFAA;
+	position absolute;
+	heigth: 25px;
+}
+
+.container-layer {
+	position: relative;
+	width: 480px;
+}
