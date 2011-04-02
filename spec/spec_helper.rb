@@ -26,5 +26,5 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   
   # Render all views by default
-  config.render_views
+  # config.render_views
 end
