@@ -1,6 +1,6 @@
 class SaleItemsController < ApplicationController
   
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => :show
   before_filter :load_shop, :except => [:add_product, :update_products]
   
   # GET /sale_items
@@ -16,10 +16,17 @@ class SaleItemsController < ApplicationController
   # GET /sale_items/1
   # GET /sale_items/1.xml
   def show
-    @sale_item = SaleItem.find(params[:id])
-
+    if params[:id].blank?
+      @sale_item = @shop.sale_items.current
+    else
+      @sale_item = SaleItem.find(params[:id])
+    end
+    
     respond_to do |format|
       format.html # show.html.erb
+      format.json do
+        @callback_name = params[:callback]
+      end
     end
   end
 
