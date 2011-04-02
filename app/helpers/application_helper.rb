@@ -12,6 +12,12 @@ module ApplicationHelper
     html.html_safe
   end
   
+  def the_owner_of(shop) 
+    if current_user == shop.user
+      yield
+    end
+  end
+  
   protected
   
   def error_messages_for_a_single_model(model)
