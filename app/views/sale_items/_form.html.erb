@@ -1,3 +1,8 @@
+<%- content_for :head do -%>
+<%= javascript_tag do %>
+$(function() {$('.calendar').datepicker( { dateFormat: "yy-mm-dd"}) })
+<%- end -%>
+<%- end -%>
 <%= form_for([@shop, @sale_item]) do |f| %>
   <% if @sale_item.errors.any? %>
     <div id="error_explanation">
@@ -22,6 +27,16 @@
   <div class="field">
     <%= f.label :total_cost %><br />
     <%= f.text_field :total_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :valid_from %> 
+    <%= f.text_field :valid_from, :class => "calendar" %>
+    <%= f.label :valid_until %> 
+    <%= f.text_field :valid_until, :class => "calendar" %> <small>(not included)</small>
   </div>
   <div class="field">
     <%= f.label :price %><br />

@@ -33,7 +33,7 @@ class SaleItemsController < ApplicationController
   # GET /sale_items/new
   # GET /sale_items/new.xml
   def new
-    @sale_item = SaleItem.new
+    @sale_item = SaleItem.new(:valid_from => Date.today, :valid_until => 7.days.from_now.to_date)
 
     respond_to do |format|
       format.html # new.html.erb

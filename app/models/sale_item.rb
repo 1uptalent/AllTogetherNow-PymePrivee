@@ -1,7 +1,9 @@
 class SaleItem < ActiveRecord::Base
   belongs_to :shop
   has_many  :products
-  validates :shop, :presence => true
+  validates :shop, :valid_from, :valid_until, :presence => true
+  # TODO: Validate date_from <= date_until
+  # TODO: Validate date_from now or future
   
   def image
     shop.logo
