@@ -12,7 +12,9 @@
     <%= image_tag @shop.logo.url(:medium) %>
     <%= image_tag @shop.logo.url(:thumb) %>
   </div>
+  <% if @shop.sale_items.current %>
   <div>
     Currently selling: <%= link_to @shop.sale_items.current.name, [@shop, @shop.sale_items.current] %>
   </div>
+  <%- end -%>
 </div>
