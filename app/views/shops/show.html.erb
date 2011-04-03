@@ -11,14 +11,9 @@
   </div>
   <div class="logos">
     <%= image_tag @shop.logo.url %>
-    <%= image_tag @shop.logo.url(:medium) %>
-    <%= image_tag @shop.logo.url(:thumb) %>
   </div>
-  <% if @shop.sale_items.current %>
-  <div>
-    Currently selling: <%= link_to @shop.sale_items.current.name, [@shop, @shop.sale_items.current] %>
-  </div>
-  <%- end -%>
+  <h2>Currently selling</h2>
+  <%= render :partial => "/sale_items/sales", :locals => {:sale_items => @shop.sale_items } %>
   <%= the_owner_of(@shop) do -%>
     <%= link_to "Add another item", new_shop_sale_item_path(@shop) %>
   <%- end -%>

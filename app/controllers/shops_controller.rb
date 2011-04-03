@@ -1,8 +1,8 @@
 class ShopsController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show, :by_hostname, :sales]
+  before_filter :authenticate_user!, :except => [:show, :by_hostname]
   before_filter :load_shop, :except => [:new, :create, :my_shop, :by_hostname]
-  before_filter :user_must_be_owner, :except => [:new, :create, :show, :my_shop, :by_hostname, :sales]
+  before_filter :user_must_be_owner, :except => [:new, :create, :show, :my_shop, :by_hostname]
   
   def show
   end

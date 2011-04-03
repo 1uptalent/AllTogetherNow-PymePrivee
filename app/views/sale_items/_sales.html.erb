@@ -1,0 +1,11 @@
+<ul>
+<% sale_items.each do |sale_item| %>
+  <li>
+    <h2><%= sale_item.name %></h2>
+    <div><%= image_tag sale_item.shop.logo.url(:medium) %></div>
+    <p><%= sale_item.description %></p>
+    <p><%= "%.2f" % sale_item.price %></p>
+    <div><%= link_to 'Buy now!!!', buy_shop_sale_item_url(@shop, sale_item)%></div>
+  </li>
+<% end %>
+</ul>
