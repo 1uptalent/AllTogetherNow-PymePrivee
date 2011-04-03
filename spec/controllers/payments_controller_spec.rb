@@ -1,9 +1,5 @@
 require 'spec_helper'
 
-def new_payment(opts = {})
-  Payment.create(opts)
-end
-
 describe PaymentsController do
 
   context "when not authenticated" do
@@ -40,7 +36,7 @@ describe PaymentsController do
     end
 
     context "and with the :token parameter" do
-      let(:payment) { new_payment(:amount => "12.34").tap{|p| p.save! } }
+      let(:payment) { create_payment(:amount => "12.34") }
       
       before(:each) do
         controller.stub(:gateway).and_return(double("gateway"))

@@ -6,5 +6,5 @@ class Shop < ActiveRecord::Base
   
   validates :user, :name, :presence => true
   
-  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :logo, :styles => { :large => "700x400>", :medium => "250x250>", :thumb => "100x100>" }
 end

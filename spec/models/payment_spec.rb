@@ -1,33 +1,5 @@
 require 'spec_helper'
 
-@@user_count = 0
-def new_user(opts = {})
-  @@user_count += 1
-  User.new({:email => "user#{@@user_count}@foo.bar", 
-            :password => "pass123", :password_confirmation => "pass123"}.merge(opts))
-end
-User.delete_all # ensure we start with no users
-
-@@shop_count = 0
-def new_shop(opts = {})
-  @@shop_count += 1
-  Shop.new( { :user => new_user, :name => "Shop #{@@shop_count}"}.merge(opts))
-end
-
-@@item_count = 0
-def new_sale_item(opts = {})
-  SaleItem.create({ :shop => new_shop, :valid_from => Date.today, :valid_until => Date.tomorrow }.merge opts)
-end
-
-@@payment_count = 0
-def new_payment(opts = {})
-  @@payment_count += 1
-  merged_opts = {:sale_item => new_sale_item, 
-                 :amount => 50.01,
-                 :concept => "Payment for reason #{@@payment_count}" }.merge(opts)
-  Payment.new(merged_opts)
-end
-
 describe Payment do
   it { should have_db_column :concept }
   it { should belong_to :sale_item }
