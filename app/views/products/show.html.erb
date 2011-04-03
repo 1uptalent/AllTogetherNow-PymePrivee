@@ -20,6 +20,9 @@
   <%= "%.2f" % @product.tax %>
 </p>
 
+<div class="logos">
+  <%= image_tag @product.picture.url %>
+</div>
 
 <%= link_to 'Edit', edit_shop_product_path(@shop, @product) %> |
 <%= link_to 'Back', shop_products_path(@shop) %>
