@@ -9,7 +9,7 @@ class SaleItemsController < ApplicationController
   # GET /sale_items
   # GET /sale_items.xml
   def index
-    @sale_items = SaleItem.all
+    @sale_items = @shop.sale_items
 
     respond_to do |format|
       format.html # index.html.erb
