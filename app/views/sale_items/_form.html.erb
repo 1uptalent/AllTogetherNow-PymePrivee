@@ -3,7 +3,6 @@
 $(function() {$('.calendar').datepicker( { dateFormat: "yy-mm-dd"}) })
 <%- end -%>
 <%- end -%>
-<div class="input_form">
 <%= form_for([@shop, @sale_item]) do |f| %>
   <% if @sale_item.errors.any? %>
     <div id="error_explanation">
@@ -39,4 +38,3 @@ $(function() {$('.calendar').datepicker( { dateFormat: "yy-mm-dd"}) })
     <%= f.submit %>
   </div>
 <% end %>
-</div>
