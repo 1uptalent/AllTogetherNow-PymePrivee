@@ -1,7 +1,7 @@
 .description-layer {
 	top: 0px;
-	left: 0px;
-	padding: 5px;
+	left: 3px;
+	padding: 0px;
 	height: 100px;
 	width: 50%;
 	background-color: black;
@@ -13,31 +13,37 @@
 	filter: alpha(opacity = 80);
 	-moz-opacity: 0.8;
 	overflow: hidden;
-	font-family: sans-serif;
 	position: absolute;
 }
 .zoom-control{
-	top: 0px;
-	margin-left: 454px;
+	top: 3px;
+	margin-left: 462px;
 	color: white;
 	z-index: 1;
 	position: absolute;
 	overflow: hidden;
-	font-family: sans-serif;
 	position: absolute;
+	cursor: pointer;
 }
 .controls-layer {
 	left: 0px;
-	top: -25px;
-	padding: 0px;
-	font-family: sans-serif;
-	background-color: blue;
+	padding: 2px;
+	font-weight: bold;
+	
 	color: #AAFFAA;
-	position absolute;
-	heigth: 25px;
+	/*-khtml-opacity: 0.9;
+	opacity: 0.9;
+	filter: alpha(opacity = 90);
+	-moz-opacity: 0.9;
+	*/
+	overflow: hidden;
+	text-align: right;
 }
 
 .container-layer {
 	position: relative;
 	width: 480px;
+	padding: 3px;
+	background-color: black;
+	font-family: helvetica;
 }
