@@ -13,8 +13,10 @@ Pymeprivee::Application.routes.draw do
   
   match "/my_shop" => redirect("/shops/my_shop"), :as => "user_root"
 
-  constraints(:host => "conejos.com") do
-    match "/" => "shops#by_hostname"
+  Shop.where("hostname is not null").collect(&:hostname).each do |hostname|
+    constraints(:host => hostname) do
+      match "/" => "shops#by_hostname"
+    end
   end
   
   resources :payments do
