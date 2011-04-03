@@ -18,7 +18,6 @@ describe "sale_items/edit.html.erb" do
     assert_select "form", :action => shop_sale_items_path(@shop, @sale_item), :method => "post" do
       assert_select "input#sale_item_name", :name => "sale_item[name]"
       assert_select "textarea#sale_item_description", :name => "sale_item[description]"
-      assert_select "input#sale_item_total_cost", :name => "sale_item[total_cost]"
       assert_select "input#sale_item_price", :name => "sale_item[price]"
     end
   end
