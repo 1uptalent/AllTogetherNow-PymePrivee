@@ -1,46 +1,65 @@
-<p id="notice"><%= notice %></p>
+<div class="full_product">
+  
+  <img src="/images/ipad_2.jpg" /> 
 
-<p>
-  <b>Name:</b>
-  <%= @sale_item.name %>
-</p>
+  <div class="product_data">
+    <div id="product_links" class="clear">
+      <%- the_owner_of(@shop) do -%>
+        <%= link_to 'Add another item', add_product_to_sale_item_path(@sale_item) %>
+        <%= link_to 'Edit', edit_shop_sale_item_path(@shop, @sale_item) %>
+      <%- end -%>
+    </div>
 
-<p>
-  <b>Description:</b>
-  <%= @sale_item.description %>
-</p>
+    <h1><%= @sale_item.name %></h1>
 
-<p>
-  <b>Total cost:</b>
-  <%= @sale_item.total_cost %>
-</p>
+    <div class="description">
+      <%- @sale_item.description.split("\n").each do |p|-%>
+        <p><%=p %></p>
+      <%- end -%>
+    </div>
 
-<p>
-  <b>Price:</b>
-  <%= @sale_item.price %>
-</p>
-<div id="socialbox"><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="" layout="box_count" show_faces="true" width="450" action="recommend" font="tahoma" colorscheme="dark"></fb:like></div>
-<p>
-  <%- @sale_item.products.each do |p| -%>
-    <%=p.name%>
-  <%- end -%>
-</p>
-<%- unless @sale_item.current? -%>
-<div class="not_current">
-  <% if @sale_item.valid_until <= Date.today %>
-    <p>This items are no longer for sale, sorry.</p>
-  <%- else -%>
-    <p>This item will be on sale starting on <%= l(@sale_item.valid_from, :format => :long) %></p>
-  <%- end -%>
-  <%- if @shop.sale_items.current.present? -%>
-  <p>Go to the <%= link_to "current sale", current_shop_sale_items_path(@shop) %>
-    on <%= link_to @shop.name, @shop %></p>
-  <%- end -%>
+    <div class="prices">
+       <p>
+         <b>Total cost:</b>
+         <%= @sale_item.total_cost %>
+      </p>
+      
+      <p>
+         <b>You save:</b>
+         <%= @sale_item.price - @sale_item.total_cost %>
+      </p>
+
+      <p class="final">
+        <b>Price:</b>
+        <%= @sale_item.price %>
+      </p>
+
+      <p>
+        <%- @sale_item.products.each do |p| -%>
+          <%=p.name%>
+        <%- end -%>
+      </p>   
+    </div>
+
+    <div id="socialbox">
+      <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+      <fb:like href="" layout="box_count" show_faces="true" width="450" action="recommend" font="tahoma" colorscheme="dark"></fb:like>
+    </div>
+    
+    <%- unless @sale_item.current? -%>
+    <p>
+      <div class="not_current">
+      <% if @sale_item.valid_until <= Date.today %>
+        <p>This items are no longer for sale, sorry.</p>
+      <%- else -%>
+        <p>This item will be on sale starting on <%= l(@sale_item.valid_from, :format => :long) %></p>
+      <%- end -%>
+      <%- if @shop.sale_items.current.present? -%>
+        <p>Go to the <%= link_to "current sale", current_shop_sale_items_path(@shop) %>
+        on <%= link_to @shop.name, @shop %></p>
+      </div>
+      <%- end -%>
+    </p>
+    <%- end -%>
+
 </div>
-<%- end -%>
-<%= the_owner_of(@shop) do -%>
-<%= link_to 'Add product', add_product_to_sale_item_path(@sale_item) %>
-
-<%= link_to 'Edit', edit_shop_sale_item_path(@shop, @sale_item) %> |
-<%= link_to 'Back', shop_sale_items_path(@shop) %>
-<%- end -%>

@@ -82,6 +82,7 @@ p {
 
 #main_header {
   height: 30px;
+  margin-bottom: 30px;
   padding: 1px 5%;
   background: $theme_black - #101010;
   
@@ -90,7 +91,6 @@ p {
     font-size: 1.4em; 
     font-weight: 500;
     line-height: 32px; 
-
 
     a {
       color: $theme_white;
@@ -108,13 +108,14 @@ p {
     li {
       float: right;
       padding: 2px 15px;
+      font-family: Quicksand;
+      font-weight: 400;
+      line-height: 28px;
     }
   }
 
   a {
-    font-family: Quicksand;
     text-decoration: none;
-    font-weight: 400;
   }
 
 }
@@ -125,7 +126,6 @@ p {
   max-width: 1100px;
   min-width: 850px;
   overflow: hidden;
-
 
   #title {
     float: left;
@@ -169,7 +169,7 @@ p {
   h2 {
     color: $theme_gray;
     font-family: Quicksand;
-    font-size: 1.8em;
+    font-size: 2.2em;
   }
 
 }
@@ -183,6 +183,132 @@ p {
   width: 500px;
   margin: 30px auto; 
 }
+
+.data {
+  margin: 30px auto;
+  width: 650px;
+  max-width: 850px;
+
+  table {
+    margin-top: 20px;
+
+    th {
+      font-family: Quicksand;
+      font-size: 1.2em;
+    }
+
+    tr {
+      margin-bottom: 10px;
+    }
+
+    td {
+    border: 1px solid red;
+      padding: 4px;
+    }
+  }
+
+  .edit {
+    padding: 5px;
+    text-align: right;
+  }
+
+  .description {
+    padding: 12px;
+    font-size: 1.3em;
+    font-style: italic;
+    font-family: Quicksand;
+  }
+
+  .price {
+    padding: 12px;
+  }
+
+}
+
+#shop {
+ .logos {
+    width: 250px;
+    float: left;
+    padding: 10px 40px 10px 0px;
+  } 
+
+  .address {
+    font-weight: 300;
+    padding: 12px;
+  }
+}
+
+
+
+.full_product {
+ 
+  img {
+    margin: 0px auto;
+  }
+
+  .product_data {
+    display: inline;
+    min-width: 250px;
+    max-width: 380px;
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    padding: 20px 30px;
+    background: black;
+    opacity: 0.85;
+    box-shadow: 0px 0px 8px black;
+   
+    h1 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 3.5em;
+    }
+    
+    p {
+      padding: 2px; 
+    }
+
+    #product_links {
+      text-align: right;
+      padding-bottom: 10px;
+    }
+
+    .description {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+      font-style: italic;
+      font-family: Quicksand;
+
+      p { padding: 5px 2px; }
+    }
+
+    .prices {
+      display: inline;
+      float: right;
+      font-family: Quicksand;
+      text-align: right;
+
+      .final {
+        padding-top: 15px;
+        color: white;
+        font-size: 1.6em;
+        font-weight: bold;
+       }
+     }
+    
+     #socialbox {
+       display: inline;
+       float: left;
+       width: 30px;
+       margin-top: 30px;
+       padding-left: 10px;
+     }
+  }
+}
+
+
+
+
 
 @mixin user_input {
   margin-bottom: 15px;
