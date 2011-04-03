@@ -1,0 +1,15 @@
+test:
+  
+development:
+  paypal: &paypal_sandbox
+    login: "valioo_1299837305_biz_api1.1uptalent.com"
+    password: "1299837317"
+    signature: "Az22oZNH3d.4eIOlEy7jePDPicGaAwZHkZ5RKLcHIRSASwirvuEQ8XCA"
+    
+staging:
+  paypal:
+    <<: *paypal_sandbox
+  
+production:
+  paypal:
+    <<: *paypal_sandbox

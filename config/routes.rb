@@ -7,6 +7,7 @@ Pymeprivee::Application.routes.draw do
     resources :products
     resources :sale_items do
       collection { get :current }
+      member { get :buy }
     end
   end
   
@@ -16,6 +17,13 @@ Pymeprivee::Application.routes.draw do
     match "/" => "shops#by_hostname"
   end
   
+  resources :payments do
+    member do
+      get :confirm
+      post :complete
+    end
+  end
+
   devise_for :users
 
   # The priority is based upon order of creation:

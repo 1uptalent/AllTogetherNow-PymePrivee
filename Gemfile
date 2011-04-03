@@ -14,6 +14,8 @@ gem "paperclip"
 
 gem 'activemerchant'
 
+gem 'hashie'
+
 #Improved CSS
 gem "haml"
 

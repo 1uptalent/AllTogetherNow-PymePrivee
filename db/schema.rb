@@ -12,6 +12,16 @@
 
 ActiveRecord::Schema.define(:version => 20110402232058) do
 
+  create_table "payments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sale_item_id"
+    t.string   "concept"
+    t.decimal  "amount",       :precision => 10, :scale => 2
+    t.string   "status",                                      :default => "user_requested"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", :force => true do |t|
     t.string   "name"
     t.string   "description"

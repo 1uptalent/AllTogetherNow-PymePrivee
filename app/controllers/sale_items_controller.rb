@@ -1,7 +1,9 @@
 class SaleItemsController < ApplicationController
   
-  before_filter :authenticate_user!, :except => :show
+  before_filter :authenticate_user!, :except => [:show, :buy]
   before_filter :load_shop, :except => [:add_product, :update_products]
+  
+  include ActiveMerchant::Billing
   
   # GET /sale_items
   # GET /sale_items.xml
@@ -102,4 +104,24 @@ class SaleItemsController < ApplicationController
   def current
     redirect_to [@shop, @shop.sale_items.current]
   end
+
+  def buy
+    @sale_item = SaleItem.find(params[:id])
+    @payment = Payment.create!(:sale_item_id => @sale_item.id, 
+                               :concept => @sale_item.name,
+                               :amount => @sale_item.price)
+    setup_response = gateway.setup_purchase(@payment.activemerchant_amount,
+      :name => "PymePrivee", 
+      :quantity => 1, 
+      :description => @payment.concept,
+      :amount      => @payment.amount,
+      :ip                => request.remote_ip,
+      :return_url        => confirm_payment_url(@payment),
+      :cancel_return_url => shop_sale_item_url(@sale_item.shop, @sale_item)
+    )
+    session[:after_purchase_url] = request.referer 
+    redirect_to gateway.redirect_url_for(setup_response.token)
+  end
+    
+
 end

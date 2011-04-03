@@ -34,5 +34,9 @@ describe SaleItemsController do
     it "recognizes and generates #current" do
       { :get => "/shops/13/sale_items/current" }.should route_to(:controller => "sale_items", :action => "current", :shop_id => "13")
     end
+
+    it "recognizes and generates #buy" do
+      { :get => "/shops/13/sale_items/3/buy" }.should route_to(:controller => "sale_items", :action => "buy", :shop_id => "13", :id => "3")
+    end
   end
 end
