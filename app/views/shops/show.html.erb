@@ -27,7 +27,7 @@
 </div>
 <div class="picture-list">
 <h2>Currently selling</h2>
-  <%= render :partial => "/sale_items/sales", :locals => {:sale_items => [@shop.sale_items.current] } %>
+  <%= render :partial => "/sale_items/sales", :locals => {:sale_items => [@shop.sale_items.current].compact } %>
 
   <h2>All offers</h2>
   <%= render :partial => "/sale_items/sales", :locals => {:sale_items => @shop.sale_items } %>

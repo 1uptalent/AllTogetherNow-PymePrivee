@@ -8,7 +8,7 @@ describe SaleItemsController do
   
 
   let(:owner) { mock_model(User, :id => 33) }
-  let(:shop) { mock_model(Shop, :id => 13, :user => owner)}
+  let(:shop) { stub_model(Shop, :id => 13, :user => owner)}
     
   before(:each) { Shop.stub(:find).and_return shop }
   
@@ -38,7 +38,7 @@ describe SaleItemsController do
       let!(:sale_items) { [mock_sale_item] }
       
       before(:each) do
-        SaleItem.stub(:all) { sale_items }
+        shop.should_receive(:sale_items).and_return(sale_items)
         get :index
       end
       
