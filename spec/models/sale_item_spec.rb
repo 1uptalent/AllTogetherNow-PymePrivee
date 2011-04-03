@@ -1,8 +1,23 @@
 require 'spec_helper'
 
+@@sale_item_count = 0
+def create_sale_item(args = {})
+  @@sale_item_count += 1
+  SaleItem.create!(
+    { :name => "Item #{@@sale_item_count}", 
+      :description => "Description for #{@@sale_item_count}",
+      :shop => shop, 
+      :valid_from => 10.days.ago, :valid_until => Date.today }.merge args)
+end
+
 describe SaleItem do
   it { should belong_to :shop }
   it { should validate_presence_of :shop }
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :description }
+  it { should validate_presence_of :price }
+  it { should validate_presence_of :valid_from }
+  it { should validate_presence_of :valid_until }
   it { should have_many :products }
   it { should have_db_column :valid_from }
   it { should have_db_column :valid_until }

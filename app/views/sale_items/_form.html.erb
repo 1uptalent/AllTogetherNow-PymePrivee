@@ -17,30 +17,22 @@ $(function() {$('.calendar').datepicker( { dateFormat: "yy-mm-dd"}) })
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <p><%= f.label :name %></p>
+    <p><%= f.text_field :name %></p>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <p><%= f.label :description %></p>
+    <p><%= f.text_area :description %></p>
   </div>
   <div class="field">
-    <%= f.label :total_cost %><br />
-    <%= f.text_field :total_cost %>
+    <p><%= f.label :price %></p>
+    <p><%= f.text_field :price %></p>
   </div>
   <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :valid_from %> 
-    <%= f.text_field :valid_from, :class => "calendar" %>
-    <%= f.label :valid_until %> 
-    <%= f.text_field :valid_until, :class => "calendar" %> <small>(not included)</small>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
+    <p><%= f.label :valid_from %></p>
+    <p><%= f.text_field :valid_from, :class => "calendar" %></p>
+    <p><%= f.label :valid_until %> <em>(not included)</em></p> 
+    <p><%= f.text_field :valid_until, :class => "calendar" %></p>
   </div>
   <div class="actions">
     <%= f.submit %>

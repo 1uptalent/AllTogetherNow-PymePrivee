@@ -1,12 +1,15 @@
 class SaleItem < ActiveRecord::Base
   belongs_to :shop
   has_many  :products
-  validates :shop, :valid_from, :valid_until, :presence => true
+  validates :shop, :name, :description, :price, :valid_from, :valid_until, :presence => true
+  
+  attr_readonly :total_cost
+  
   # TODO: Validate date_from <= date_until
   # TODO: Validate date_from now or future
   
   def image
-    shop.logo
+    @image ||= products.first.picture || shop.logo
   end
 
   def current?
