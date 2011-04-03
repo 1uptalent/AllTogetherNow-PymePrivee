@@ -1,9 +1,10 @@
 <%= @callback_name %> ( 
 	{
-		description: '<%= @sale_item.name %>',
-		image: '<%= request.protocol + request.host + ":" + request.port.to_s + @sale_item.image.url(:medium)%>',
-		buy_url: '<%= url_for buy_shop_sale_item_url(@shop, @sale_item)%>',
-		sale_url: '<%= url_for shop_sale_item_url(@shop, @sale_item)%>',
-		price: <%= @sale_item.price %>
+		html: '
+		<%= @sale_item.name %>
+		<b>Price:</b>
+    <%= @sale_item.price %>
+		<div id="socialbox"><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="" layout="box_count" show_faces="true" width="450" action="recommend" font="tahoma" colorscheme="dark"></fb:like></div>
+		'
 	} 
 )

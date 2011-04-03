@@ -1,7 +1,6 @@
 class SaleItemsController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show, :buy]
-  
+  before_filter :authenticate_user!, :except => [:show, :info, :buy]
   before_filter :load_shop, :except => [:add_product, :update_products]
   
   include ActiveMerchant::Billing
@@ -24,13 +23,26 @@ class SaleItemsController < ApplicationController
     else
       @sale_item = SaleItem.find(params[:id])
     end
-    
     respond_to do |format|
       format.html # show.html.erb
       format.json do
         @callback_name = params[:callback]
       end
     end
+  end
+
+  def info
+    if params[:id].blank?
+      @sale_item = @shop.sale_items.current
+    else
+      @sale_item = SaleItem.find(params[:id])
+    end
+    respond_to do |format|
+      format.json do
+        @callback_name = params[:callback]
+      end
+    end
+    
   end
 
   # GET /sale_items/new
