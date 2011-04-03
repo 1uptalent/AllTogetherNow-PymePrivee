@@ -1,6 +1,7 @@
 class SaleItemsController < ApplicationController
   
   before_filter :authenticate_user!, :except => [:show, :buy]
+  
   before_filter :load_shop, :except => [:add_product, :update_products]
   
   include ActiveMerchant::Billing
@@ -122,6 +123,9 @@ class SaleItemsController < ApplicationController
     session[:after_purchase_url] = request.referer 
     redirect_to gateway.redirect_url_for(setup_response.token)
   end
-    
+
+  def all
+    @sale_items = @shop.sale_items
+  end
 
 end

@@ -7,17 +7,17 @@
     <img src="/images/jam.jpg" alt="Yummy!!" />
   </div>
    
-  <div id="products_list">
-    <h2>Nuevos Productos</h2>
+  <div id="sales_list">
+    <h2>Nuevas Ofertas</h2>
     <ul>
-      <% @products.each do |product| %>
+      <% @sales.each do |sale| %>
         <li>
-          <p><%= product.name%>
+          <p><%= sale.name%>
         </p>
         <div>
-          [imagen del producto cuando lo tenga]
+          [imagen de la oferta cuando lo tenga]
           <div>
-            <p>by <%= link_to product.shop.name, shop_path(product.shop)%><%= image_tag product.shop.logo.url(:thumb) %>
+            <p>by <%= link_to sale.shop.name, shop_path(sale.shop)%><%= image_tag sale.shop.logo.url(:thumb) %>
           </p>
         </li>
       <%- end -%>
@@ -29,7 +29,7 @@
     <ul>
       <% @shops.each do |shop| %>
         <li>
-          <p><%= link_to shop.name, shop_products_path(shop)%></p>
+          <p><%= link_to shop.name, shop_sale_items_path(shop)%></p>
           <div>
             <%= image_tag shop.logo.url(:medium) %>
           <div>

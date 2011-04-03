@@ -7,6 +7,7 @@ Pymeprivee::Application.routes.draw do
     resources :products
     resources :sale_items do
       collection { get :current }
+      collection { get :all }
       member { get :buy }
     end
   end
