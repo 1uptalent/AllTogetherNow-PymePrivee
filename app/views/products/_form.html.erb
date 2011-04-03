@@ -27,6 +27,10 @@
     <%= f.label :tax %><br />
     <%= f.text_field :tax %>
   </div>
+  <div class="field">
+    <p><%= f.label :picture, "Picture" %></p>
+    <p><%= f.file_field :picture %></p>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
