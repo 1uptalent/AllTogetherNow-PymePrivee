@@ -1,5 +1,4 @@
 class PaymentsController < ApplicationController
-  before_filter :authenticate_user!
   before_filter :verify_gateway_token_is_provided!
   
   include ActiveMerchant::Billing
