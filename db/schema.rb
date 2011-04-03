@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110403084532) do
+ActiveRecord::Schema.define(:version => 20110403092917) do
 
   create_table "payments", :force => true do |t|
     t.integer  "user_id"
@@ -25,12 +25,16 @@ ActiveRecord::Schema.define(:version => 20110403084532) do
   create_table "products", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.decimal  "cost",         :precision => 10, :scale => 2
-    t.decimal  "tax",          :precision => 5,  :scale => 3
+    t.decimal  "cost",                 :precision => 10, :scale => 2
+    t.decimal  "tax",                  :precision => 5,  :scale => 3
     t.integer  "shop_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sale_item_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "sale_items", :force => true do |t|
