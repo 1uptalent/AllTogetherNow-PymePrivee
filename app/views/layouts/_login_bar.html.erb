@@ -4,11 +4,12 @@
   </h1>
   <ul class="header_links">
     <%- if user_signed_in? -%>
+    <% welcome_name = current_user.shop.nil? ? current_user.email : current_user.shop.name %>
       <li>
         <%= link_to "Sign out", destroy_user_session_path %>
       </li>
       <li>
-        <span class="greeting">Hello <%= current_user.email %></span> 
+        <span class="greeting">Hello <%= link_to welcome_name, my_shop_shops_path %></span> 
       </li>
     <%- else -%>
       <li>
