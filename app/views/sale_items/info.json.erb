@@ -1,5 +1,6 @@
 <%= @callback_name %> ( 
 	{
+	  shop_name: '<%= @shop.name %>',
 		description: '<%= @sale_item.name %>',
 		image: '<%= request.protocol + request.host + ":" + request.port.to_s + @sale_item.image.url(:medium)%>',
 		buy_url: '<%= url_for buy_shop_sale_item_url(@shop, @sale_item)%>',
