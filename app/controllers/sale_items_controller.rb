@@ -29,7 +29,10 @@ class SaleItemsController < ApplicationController
       format.json do
         ActionController::Base.asset_host = request.host + ":" + request.port.to_s 
         content = render_to_string(:partial => "sale")
-        render :json => " #{params[:callback]}( {	html: '#{escape_javascript content}' } )"
+        render :json => " #{params[:callback]}( {
+                  shop_name: '#{@shop.name}',
+                  html: '#{escape_javascript content}' }
+             )"
       end
     end
   end

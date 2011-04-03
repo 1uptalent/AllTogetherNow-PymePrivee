@@ -53,10 +53,12 @@
 </div>
 <div class="data" style="margin-top: 2em">
   <%- @sale_item.products.each do |p| -%>
+    <div>
     <h2><%=p.name %></h2>
     <%= image_tag p.picture.url(:medium), :style => "float: left; margin: 1em;" %>
     <%- p.description.split("\n").each do |paragraph| -%>
       <p><%= paragraph%></p>
     <%- end -%>
+    </div>
   <%- end -%>
 </div>
