@@ -61,6 +61,12 @@ h1 {
   line-height: 45px;
 }
 
+h2 {
+  @include header;
+  font-size: 2.2em;
+  line-height: 40px;
+}
+
 a {
   color: $theme_red;
   text-decoration: underline;
@@ -241,9 +247,14 @@ p {
 
 
 .full_product {
- 
-  img {
-    margin: 0px auto;
+  
+  .full_bg_image {
+    width: 100%; 
+    height: 600px; 
+       -moz-background-size: cover;
+         -o-background-size: cover;
+    -webkit-background-size: cover;
+            background-size: cover;
   }
 
   .product_data {

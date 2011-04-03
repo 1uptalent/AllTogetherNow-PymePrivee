@@ -40,6 +40,11 @@ h1 {
   font-size: 2.9em;
   line-height: 45px; }
 
+h2 {
+  font-family: Quicksand;
+  font-size: 2.2em;
+  line-height: 40px; }
+
 a {
   color: #ef2222;
   text-decoration: underline; }
@@ -165,8 +170,13 @@ p {
   font-weight: 300;
   padding: 12px; }
 
-.full_product img {
-  margin: 0px auto; }
+.full_product .full_bg_image {
+  width: 100%;
+  height: 600px;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover; }
 .full_product .product_data {
   display: inline;
   min-width: 250px;
