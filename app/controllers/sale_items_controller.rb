@@ -1,5 +1,6 @@
 class SaleItemsController < ApplicationController
-  
+  include ActionView::Helpers::JavaScriptHelper
+    
   before_filter :authenticate_user!, :except => [:show, :info, :buy]
   before_filter :load_shop, :except => [:add_product, :update_products]
   
@@ -26,7 +27,9 @@ class SaleItemsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json do
-        @callback_name = params[:callback]
+        ActionController::Base.asset_host = request.host + ":" + request.port.to_s 
+        content = render_to_string(:partial => "sale")
+        render :json => " #{params[:callback]}( {	html: '#{escape_javascript content}' } )"
       end
     end
   end
