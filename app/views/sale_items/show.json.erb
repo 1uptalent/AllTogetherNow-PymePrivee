@@ -2,7 +2,7 @@
 	{
 		description: '<%= @sale_item.name %>',
 		image: '<%= request.protocol + request.host + ":" + request.port.to_s + @sale_item.image.url(:medium)%>',
-		url: '<%= url_for shop_sale_item_url(@shop, @sale_item)%>',
+		url: '<%= url_for buy_shop_sale_item_url(@shop, @sale_item)%>',
 		price: <%= @sale_item.price %>
 	} 
 )
