@@ -1,8 +1,8 @@
 class ShopsController < ApplicationController
   
-  before_filter :authenticate_user!, :except => :show
-  before_filter :load_shop, :except => [:new, :create, :my_shop]
-  before_filter :user_must_be_owner, :except => [:new, :create, :my_shop]
+  before_filter :authenticate_user!, :except => [:show, :by_hostname]
+  before_filter :load_shop, :except => [:new, :create, :my_shop, :by_hostname]
+  before_filter :user_must_be_owner, :except => [:new, :create, :show, :my_shop, :by_hostname]
   
   def show
   end
@@ -11,6 +11,11 @@ class ShopsController < ApplicationController
     @shop = current_user.shop
     redirect_to new_shop_path and return if @shop.nil?
     render :show
+  end
+  
+  def by_hostname
+    @shop = Shop.find_by_hostname(request.host)
+    render :show, :layout => 'virtual_1'
   end
   
   def new

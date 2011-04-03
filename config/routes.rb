@@ -12,8 +12,10 @@ Pymeprivee::Application.routes.draw do
   
   match "/my_shop" => redirect("/shops/my_shop"), :as => "user_root"
 
-  get "home/index"
-
+  constraints(:host => "conejos.com") do
+    match "/" => "shops#by_hostname"
+  end
+  
   devise_for :users
 
   # The priority is based upon order of creation:
