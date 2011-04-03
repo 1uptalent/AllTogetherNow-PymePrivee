@@ -11,4 +11,7 @@ class Shop < ActiveRecord::Base
                                  :large => "700x400#", 
                                  :medium => "250x150#", 
                                  :thumb => "50x50#" }
+  def virtual_site?
+    !hostname.blank?
+  end
 end

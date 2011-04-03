@@ -9,7 +9,8 @@ describe "sale_items/show.html.erb" do
       :total_cost => "9.99",
       :price => "12.99",
       :valid_from => "2009-01-01".to_date,
-      :valid_until => Date.tomorrow
+      :valid_until => Date.tomorrow,
+      :image => mock(Paperclip::Attachment, :url => "")
     ))
   end
 
@@ -17,13 +18,12 @@ describe "sale_items/show.html.erb" do
     render
     rendered.should match(/Name/)
     rendered.should match(/MyText/)
-    rendered.should match(/9.99/)
     rendered.should match(/12.99/)
   end
   
   context "with products" do
     before do
-      products = [mock_model(Product, :name => 'Jam')]
+      products = [mock_model(Product, :name => 'Jam', :description => "Banana", :picture => mock(Paperclip::Attachment, :url => ""))]
       @sale_item.stub(:products).and_return(products)
     end
     
@@ -36,6 +36,7 @@ describe "sale_items/show.html.erb" do
   context "when not current" do
     before do
       @sale_item.stub(:valid_until).and_return(Date.today)
+      @sale_item.stub(:image).and_return(mock(Paperclip::Attachment, :url => ""))
     end
     
     it "should render a warning" do
