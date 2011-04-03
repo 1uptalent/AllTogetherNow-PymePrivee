@@ -86,6 +86,6 @@ Pymeprivee::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   
-  get '/widgets/shop/:shop_id/current' => "sale_items#show" 
+  get '/widgets/shop/:shop_id/current' => "sale_items#info" 
   root :to => "home#index"
 end
