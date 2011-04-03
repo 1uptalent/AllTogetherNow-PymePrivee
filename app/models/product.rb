@@ -3,5 +3,9 @@ class Product < ActiveRecord::Base
   
   validates :shop, :presence => true
   
-  has_attached_file :picture, :styles => { :full => "1024x768>", :large => "700x400>", :medium => "250x250>", :thumb => "100x100>" }
+  has_attached_file :picture, 
+                    :styles => { :full => "1024x768>", 
+                                 :large => "700x400>", 
+                                 :medium => "250x250>", 
+                                 :thumb => "50x50>" }
 end
