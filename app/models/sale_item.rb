@@ -9,7 +9,8 @@ class SaleItem < ActiveRecord::Base
   # TODO: Validate date_from now or future
   
   def image
-    @image ||= products.first.picture || shop.logo
+    product_picture = products.first ? products.first.picture : nil
+    @image ||= product_picture || shop.logo
   end
 
   def current?
