@@ -3,20 +3,7 @@ require 'spec_helper'
 describe PaymentsController do
 
   context "when not authenticated" do
-    it "GET :confirm requires the user to sign in" do
-      get :confirm, :id => 1
-      response.should redirect_to(new_user_session_url)
-    end
-    it "POST :complete requires the user to sign in" do
-      post :complete, :id => 1
-      response.should redirect_to(new_user_session_url)
-    end
-  end
-
-  describe "when authenticated" do
     let(:user) { new_user.tap {|u| u.save! }}
-    
-    before(:each) { sign_in user }
     
     context "without the :token parameter" do
       context "GET :confirm" do
