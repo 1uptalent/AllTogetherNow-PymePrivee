@@ -1,45 +1,38 @@
-<div class="data">
-  <div id="shop">
-    <h1><%= @shop.name %></h1>
+<div class="full_product">
+  <div class="full_bg_image" style="background-image: url(<%= @shop.logo.url(:full) %>)"></div>
 
-    <%= the_owner_of(@shop) do -%>
-      <div class="edit">
+  <div class="product_data">
+    <div id="product_links" class="clear">
+      <%- the_owner_of(@shop) do -%>
         <%= link_to "edit", edit_shop_path(@shop)%>
-      </div>
-    <%- end -%>
-
-    <div class="logos">
-      <%= image_tag @shop.logo.url(:medium) %>
-    </div>
-
-    <div class="address"><%= @shop.address %></div>
-    <div class="description">
-      <% @shop.description.split("\n").each do |p| -%>
-        <p><%= p %></p>
       <%- end -%>
     </div>
 
-    <% if @shop.sale_items.current %>
-    <div>
-      Currently selling: <%= link_to @shop.sale_items.current.name, [@shop, @shop.sale_items.current] %>
+    <h1><%= @shop.name %></h1>
+    <div class="address">
+      <p><%= @shop.address %></p>
     </div>
-    <%- end -%>
     
-    <div class="clear"></div>
 
-    <%= the_owner_of(@shop) do -%>
-      <div class="edit">
-        <%= link_to "Add another item", new_shop_sale_item_path(@shop) %>
-      </div>
-    <%- end -%>
+    <div class="description">
+      <%- @shop.description.split("\n").each do |p|-%>
+        <p><%=p %></p>
+      <%- end -%>
+    </div>
 
-  </div>
-  <div class="logos">
-    <%= image_tag @shop.logo.url %>
-  </div>
-  <h2>Currently selling</h2>
+    <div id="socialbox">
+      <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+      <fb:like href="" layout="box_count" show_faces="true" width="450" action="recommend" font="tahoma" colorscheme="dark"></fb:like>
+    </div>    
+</div>
+<div class="picture-list">
+<h2>Currently selling</h2>
+  <%= render :partial => "/sale_items/sales", :locals => {:sale_items => [@shop.sale_items.current] } %>
+
+  <h2>All offers</h2>
   <%= render :partial => "/sale_items/sales", :locals => {:sale_items => @shop.sale_items } %>
+
   <%= the_owner_of(@shop) do -%>
-    <%= link_to "Add another item", new_shop_sale_item_path(@shop) %>
+    <p><%= link_to "Add another item", new_shop_sale_item_path(@shop) %></p>
   <%- end -%>
 </div>

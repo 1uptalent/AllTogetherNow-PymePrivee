@@ -2,6 +2,7 @@ $theme_black: #242424;
 $theme_white: #dfdfdf;
 $theme_gray: #6f6f6f;
 $theme_red: #ef2222;
+$theme_red_bg: $theme_red - #aa0000;
 
 @font-face {
   font-family: 'Quicksand';
@@ -65,6 +66,12 @@ h2 {
   @include header;
   font-size: 2.2em;
   line-height: 40px;
+}
+
+h3 {
+  @include header;
+  font-size: 1.8em;
+  line-height: 36px;
 }
 
 a {
@@ -231,20 +238,42 @@ p {
 
 }
 
-#shop {
- .logos {
-    width: 250px;
-    float: left;
-    padding: 10px 40px 10px 0px;
-  } 
-
-  .address {
-    font-weight: 300;
-    padding: 12px;
-  }
+.address {
+  font-weight: 300;
+  text-align: right;
+  margin-bottom: 1em;
 }
 
+.picture-list {
+  width: 900px;
+  margin: 20px auto;
+}
 
+ul.sale_items {
+  margin: auto;
+  list-style: none;
+  li {  
+    margin-bottom: 40px;  
+    li {
+      display: inline-block;
+      width: 250px;
+      margin: 0 1.5%;
+    }
+  }
+  .buy {
+    @include header;
+    text-align: right;
+    font-size: 1.2em;
+    a {
+      padding: 5px 1em;
+      background-color: $theme_red_bg;
+    }
+  }
+  .price {
+    float: left;
+    font-size: 1.2em;
+  }
+}
 
 .full_product {
   
@@ -273,15 +302,18 @@ p {
       color: white;
       margin-bottom: 20px;
       font-size: 3.5em;
+      
     }
+    
+    #product_links {
+      display: inline;
+      text-align: right;
+      padding-bottom: 10px;
+    }
+    
     
     p {
       padding: 2px; 
-    }
-
-    #product_links {
-      text-align: right;
-      padding-bottom: 10px;
     }
 
     .description {
@@ -308,9 +340,8 @@ p {
      }
     
      #socialbox {
-       display: inline;
+       display: inline-block;
        float: left;
-       width: 30px;
        margin-top: 30px;
        padding-left: 10px;
      }

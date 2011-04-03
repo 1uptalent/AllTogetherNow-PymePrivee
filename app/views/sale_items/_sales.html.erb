@@ -1,11 +1,18 @@
-<ul>
-<% sale_items.each do |sale_item| %>
+<ul class="sale_items">
+<% sale_items.each_slice(3) do |row| %>
   <li>
-    <h2><%= sale_item.name %></h2>
-    <div><%= image_tag sale_item.image.url(:medium) %></div>
-    <p><%= sale_item.description %></p>
-    <p><%= "%.2f" % sale_item.price %></p>
-    <div><%= link_to 'Buy now!!!', buy_shop_sale_item_url(@shop, sale_item)%></div>
+    <ul>
+      <% row.each do |sale_item| %>
+      <li>
+        <h3><%= link_to sale_item.name, [@shop, @shop.sale_items.current] %></h3>
+        <div><%= link_to [@shop, @shop.sale_items.current] do -%>
+          <%= image_tag sale_item.image.url(:medium) -%>
+        <%- end -%></div>
+        <p class="price"><%= "%.2f" % sale_item.price %></p>
+        <div class="buy"><%= link_to 'Buy now!!!', buy_shop_sale_item_url(@shop, sale_item), :class => "buy" %></div>
+      </li>
+      <%- end-%>
+    </ul>
   </li>
 <% end %>
 </ul>
