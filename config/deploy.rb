@@ -19,7 +19,7 @@ server ENV['SERVER']||'', :app, :web, :db, :primary => true
 def rake(arguments)
   rake = fetch(:rake, "rake")
   rails_env = fetch(:rails_env, "production")
-  run "cd #{current_release}; #{rake} RAILS_ENV=#{rails_env} #{arguments}"
+  run "cd #{current_release}; #{rake} #{arguments} RAILS_ENV=#{rails_env}"
 end
 
 # If you are using Passenger mod_rails uncomment this:
@@ -46,5 +46,5 @@ namespace :db do
 end
 
 Bundler::Deployment.define_task(self, :task, :except => { :no_release => true })
-after "deploy:update_code", "bundle:install", "rvm:trust_rvmrc"
-after "deploy:setup", "db:create"
+after "deploy:update_code", "rvm:trust_rvmrc", "bundle:install"
+before "deploy:migrate", "db:create"
