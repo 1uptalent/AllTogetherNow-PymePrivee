@@ -14,11 +14,12 @@ Pymeprivee::Application.routes.draw do
   
   match "/my_shop" => redirect("/shops/my_shop"), :as => "user_root"
 
-  Shop.where("hostname is not null").collect(&:hostname).each do |hostname|
-    constraints(:host => hostname) do
-      match "/" => "shops#by_hostname"
-    end
-  end
+  # FIXME: this does not work deploying to a server without the Shops table
+  # Shop.where("hostname is not null").collect(&:hostname).each do |hostname|
+  #   constraints(:host => hostname) do
+  #     match "/" => "shops#by_hostname"
+  #   end
+  # end
   
   resources :payments do
     member do
