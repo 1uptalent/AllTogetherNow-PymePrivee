@@ -41,4 +41,5 @@ gem "haml"
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda'
+  gem 'capistrano'
 end
