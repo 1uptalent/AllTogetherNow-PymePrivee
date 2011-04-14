@@ -3,6 +3,7 @@ class ShopsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :by_hostname]
   before_filter :load_shop, :except => [:new, :create, :my_shop, :by_hostname]
   before_filter :user_must_be_owner, :except => [:new, :create, :show, :my_shop, :by_hostname]
+  skip_before_filter :ensure_user_has_shop, :only => [:new, :create]
   
   def show
   end
