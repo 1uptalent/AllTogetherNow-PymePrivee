@@ -35,5 +35,5 @@ production:
   database: pymeprivee_production
   pool: 5
   username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+  password: xgnpassword
+  host: xgn.cpysaqr4t7kr.eu-west-1.rds.amazonaws.com:3306
