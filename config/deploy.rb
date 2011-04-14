@@ -12,11 +12,10 @@ set :use_sudo, false
 
 set :repository,  "git://github.com/1uptalent/AllTogetherNow-PymePrivee.git"
 # Version inicial
-# set :branch, "xgn-inicial"
+# set :branch, "xgn"
 # Versión con RDS
 # set :branch, "xgn-rds"
-# Última versión en la rama xgn
-set :branch, "xgn"
+set :branch, "xgn-rds"
 
 set :deploy_to, "/home/ubuntu/production"
 
