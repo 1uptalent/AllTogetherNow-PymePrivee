@@ -9,14 +9,17 @@ describe ProductsController do
   let(:owner) { mock_model(User, :id => 33) }
   let(:shop)  { mock_model(Shop, :id => 3, :user => owner) }
   
-  before { Shop.stub(:find).with("3").and_return(shop) }
+  before do
+    owner.stub(:shop => shop)
+    Shop.stub(:find).with("3").and_return(shop)
+  end
 
   def mock_product(stubs={ :name => "PName", :description => "PDesc", :cost => 123.45, :tax => 99.99})
     @mock_product ||= mock_model(Product, stubs).as_null_object
   end
 
   describe "when authenticated is not the owner" do
-    let(:other_user) { mock_model(User, :id => 55) } 
+    let(:other_user) { mock_model(User, :id => 55, :shop => mock_model(Shop)) } 
     before do
       User.stub(:find).and_return(other_user)
       sign_in other_user

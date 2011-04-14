@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ShopsController do
-  let(:user) { mock_model(User, :id => 33) }
+  let(:user) { mock_model(User, :id => 33, :shop => nil) }
   
   context "GET: show" do
     
@@ -98,6 +98,7 @@ describe ShopsController do
     context "with an authenticated user who is not the owner" do
       before(:each) do
         User.stub(:find).and_return(user)
+        user.stub(:shop => stub_model(Shop))
         sign_in user
         get :edit, :id => "1"
       end
@@ -107,6 +108,7 @@ describe ShopsController do
     context "with the owner as authenticated user" do
       before(:each) do
         User.stub(:find).and_return(owner)
+        owner.stub(:shop => shop)
         sign_in owner
         get :edit, :id => "1"
       end
@@ -138,6 +140,7 @@ describe ShopsController do
       let(:shop) { stub_model(Shop, :id => 3, :user => user, :name => "old name") }
       
       before(:each) do
+        user.stub(:shop => shop)
         User.stub(:find).and_return(user)
         Shop.stub(:find).with("3").and_return(shop)
         sign_in user

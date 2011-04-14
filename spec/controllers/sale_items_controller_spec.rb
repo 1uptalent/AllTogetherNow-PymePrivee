@@ -10,7 +10,10 @@ describe SaleItemsController do
   let(:owner) { mock_model(User, :id => 33) }
   let(:shop) { stub_model(Shop, :id => 13, :user => owner)}
     
-  before(:each) { Shop.stub(:find).and_return shop }
+  before(:each) do
+    owner.stub(:shop => shop)
+    Shop.stub(:find).and_return shop
+  end
   
   %w{delete post put get}.each do |method|
     class_eval <<-EO_CODE
