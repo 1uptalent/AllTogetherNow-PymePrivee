@@ -9,7 +9,9 @@
         <%= link_to "Sign out", destroy_user_session_path %>
       </li>
       <li>
-        <span class="greeting">Hello <%= link_to current_user.shop.name, my_shop_shops_path %> owner</span> 
+        <span class="greeting">Hello
+          <%= link_to current_user.shop.name, my_shop_shops_path unless current_user.shop.nil? %>
+          owner</span> 
       </li>
     <%- else -%>
       <li>
