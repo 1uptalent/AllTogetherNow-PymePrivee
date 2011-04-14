@@ -21,7 +21,7 @@ set :branch, "xgn"
 set :deploy_to, "/home/ubuntu/production"
 
 server 'ec2-46-51-147-10.eu-west-1.compute.amazonaws.com', :app, :web, :db, :primary => true
-# server 'ec2-79-125-36-214.eu-west-1.compute.amazonaws.com', :app, :web, :db #, :primary => true
+server 'ec2-79-125-36-214.eu-west-1.compute.amazonaws.com', :app, :web, :db
 
 
 def rake(arguments)
@@ -55,4 +55,4 @@ end
 
 Bundler::Deployment.define_task(self, :task, :except => { :no_release => true })
 after "deploy:update_code", "rvm:trust_rvmrc", "bundle:install"
-before "deploy:migrate", "db:create"
+# before "deploy:migrate", "db:create"
