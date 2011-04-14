@@ -37,7 +37,7 @@ gem "haml"
 
 
 group :production do
-  gem 'aws-s3', :require => 'aws/s3'
+  gem 'aws-s3'
 end
 
 # Bundle gems for the local environment. Make sure to
