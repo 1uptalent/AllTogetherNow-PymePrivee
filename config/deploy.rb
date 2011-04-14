@@ -11,10 +11,18 @@ set :user, "ubuntu"
 set :use_sudo, false
 
 set :repository,  "git://github.com/1uptalent/AllTogetherNow-PymePrivee.git"
+# Version inicial
+# set :branch, "xgn-inicial"
+# Versión con RDS
+# set :branch, "xgn-rds"
+# Última versión en la rama xgn
+set :branch, "xgn"
+
 set :deploy_to, "/home/ubuntu/production"
 
-# TODO: set the server
-server ENV['SERVER']||'', :app, :web, :db, :primary => true
+server 'ec2-46-51-147-10.eu-west-1.compute.amazonaws.com', :app, :web, :db, :primary => true
+# server 'ec2-79-125-36-214.eu-west-1.compute.amazonaws.com', :app, :web, :db #, :primary => true
+
 
 def rake(arguments)
   rake = fetch(:rake, "rake")
