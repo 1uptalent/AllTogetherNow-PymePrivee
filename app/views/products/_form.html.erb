@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <p><%= f.label :picture, "Picture" %></p>
-    <%- if @product.picture -%><p>
+    <%- if @product.picture -%>
       <p><%= image_tag @product.picture.url(:thumb) %></p>
     <%- end -%>
     <p><%= f.file_field :picture %></p>
