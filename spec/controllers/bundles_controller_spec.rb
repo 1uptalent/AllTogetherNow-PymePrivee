@@ -204,5 +204,22 @@ describe BundlesController do
         should assign_to :products
       end
     end
+    
+    describe "POST update_products" do
+      before do
+        Bundle.stub(:find).and_return(mock_bundle)
+        mock_bundle.stub(:shop => shop)
+      end
+      
+      it "should redirect to the shop_bundle url" do
+        post_without_shop_id :update_products, :id => "1", :product_ids => %w{1 10 100}
+        should redirect_to shop_bundle_path(shop, mock_bundle)
+      end
+      
+      it "should set the products to the selected ones" do
+        mock_bundle.should_receive(:product_ids=).with(%w{1 10 100})
+        post_without_shop_id :update_products, :id => "1", :product_ids => %w{1 10 100}
+      end
+    end
   end
 end

@@ -8,7 +8,8 @@ describe Bundle do
   it { should validate_presence_of :price }
   it { should validate_presence_of :valid_from }
   it { should validate_presence_of :valid_until }
-  it { should have_many :products }
+  it { should have_many :bundle_products }
+  it { should have_many(:products).through(:bundle_products) }
   it { should have_db_column :valid_from }
   it { should have_db_column :valid_until }
   

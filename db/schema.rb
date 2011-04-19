@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110419152532) do
+ActiveRecord::Schema.define(:version => 20110419194100) do
+
+  create_table "bundle_products", :force => true do |t|
+    t.integer  "bundle_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bundles", :force => true do |t|
     t.string   "name"

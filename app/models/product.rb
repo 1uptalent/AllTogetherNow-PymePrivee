@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :shop
+  has_many   :bundle_products
+  has_many   :bundles, :through => :bundle_products
   
   validates :shop, :presence => true
   

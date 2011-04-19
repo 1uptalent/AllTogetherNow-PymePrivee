@@ -1,7 +1,8 @@
 class Bundle < ActiveRecord::Base
   belongs_to :shop
-  has_many  :products
-  validates :shop, :name, :description, :price, :valid_from, :valid_until, :presence => true
+  has_many   :bundle_products
+  has_many   :products, :through => :bundle_products
+  validates  :shop, :name, :description, :price, :valid_from, :valid_until, :presence => true
   
   attr_readonly :total_cost
   
