@@ -190,17 +190,18 @@ describe BundlesController do
     describe "GET add_product" do
       before  do
         Bundle.stub(:find).and_return(mock_bundle)
+        @shop=mock(:shop)
+        mock_bundle.stub(:shop).and_return(shop)
       end
       
       it "retrieves the avaliable products" do
-        shop=mock(:shop)
-        mock_bundle.stub(:shop).and_return(shop)
-        shop.should_receive(:products).and_return([])
+        shop.should_receive(:products)
         get_without_shop_id :add_product, :id => "1"
       end
       
-      xit "assigns the list of products" do
-        
+      it "assigns the list of products" do
+        get_without_shop_id :add_product, :id => "1"
+        should assign_to :products
       end
     end
   end
