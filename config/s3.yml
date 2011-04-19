@@ -1,3 +1,4 @@
+# TODO: These keys are invalid and need to be provided from your AWS credentials
 production:
   access_key_id: AKIAIE5FN5YCIZ2JOJ2A
   secret_access_key: 8H/GQtpy+yvfKx/BuRPpFDsK/AWhOnl7ynGijLqc

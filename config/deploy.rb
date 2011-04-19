@@ -54,4 +54,4 @@ end
 
 Bundler::Deployment.define_task(self, :task, :except => { :no_release => true })
 after "deploy:update_code", "rvm:trust_rvmrc", "bundle:install"
-# before "deploy:migrate", "db:create"
+before "deploy:migrate", "db:create"
