@@ -3,7 +3,7 @@
 
   <div class="product_data">
     <div id="product_links" class="clear">
-      <%- the_owner_of(@shop) do -%>
+      <%= the_owner_of(@shop) do -%>
         <%= link_to "edit", edit_shop_path(@shop)%>
       <%- end -%>
     </div>
