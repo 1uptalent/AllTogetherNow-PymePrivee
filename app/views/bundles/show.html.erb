@@ -4,7 +4,7 @@
 
   <div class="product_data">
     <div id="product_links" class="clear">
-      <%- the_owner_of(@shop) do -%>
+      <%= the_owner_of(@shop) do -%>
         <%= link_to 'Add another item', add_product_to_bundle_path(@bundle) %>
         <%= link_to 'Edit', edit_shop_bundle_path(@shop, @bundle) %>
       <%- end -%>
@@ -19,17 +19,6 @@
     </div>
 
     <div class="prices">
-       <!--
-       <p>
-         <b>Total cost:</b>
-         <%= @bundle.price %>
-      </p>
-      
-      <p>
-         <b>You save:</b>
-         <%= @bundle.price - @bundle.total_cost %>
-      </p>
-      -->
       <p class="final">
         <b>Price:</b>
         <%= @bundle.price %>
@@ -42,8 +31,7 @@
     </div>
     
     <%- unless @bundle.current? -%>
-    <p style="clear: both;">
-      <div class="not_current">
+    <div class="not_current" style="clear: both;">
       <% if @bundle.valid_until <= Date.today %>
         <p>This items are no longer for sale, sorry.</p>
       <%- else -%>
@@ -52,9 +40,8 @@
       <%- if @shop.bundles.current.present? -%>
         <p>Go to the <%= link_to "current sale", current_shop_bundles_path(@shop) %>
         on <%= link_to @shop.name, @shop %></p>
-      </div>
       <%- end -%>
-    </p>
+    </div>
     <%- end -%>
 </div>
 <div class="data" style="margin-top: 2em">
