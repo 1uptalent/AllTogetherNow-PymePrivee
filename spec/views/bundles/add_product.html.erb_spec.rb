@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe "sale_items/add_product.html.erb" do
+describe "bundles/add_product.html.erb" do
   before do
     @products = assign(:products, [mock_model(Product, :name => 'Jam'),       mock_model(Product, :name => 'Cheese')])
-    @sale_item = assign(:sale_item, mock_model(SaleItem, :products => [], :product_ids => [], :shop => mock_model(Shop)))
+    @bundle = assign(:bundle, mock_model(Bundle, :products => [], :product_ids => [], :shop => mock_model(Shop)))
     render
   end
 
-  it "should submit via post to update_products_for_sale_item" do
-    assert_select "form[action=?][method=post]", update_products_for_sale_item_path(@sale_item)
+  it "should submit via post to update_products_for_bundle" do
+    assert_select "form[action=?][method=post]", update_products_for_bundle_path(@bundle)
   end
 
   it 'renders the avaliable products in a select' do
@@ -23,8 +23,8 @@ describe "sale_items/add_product.html.erb" do
   
   context "with previous selection" do
     before do
-      @sale_item.stub(:products).and_return(@products)
-      @sale_item.stub(:product_ids).and_return(@products.collect(&:id))
+      @bundle.stub(:products).and_return(@products)
+      @bundle.stub(:product_ids).and_return(@products.collect(&:id))
       render
     end
 

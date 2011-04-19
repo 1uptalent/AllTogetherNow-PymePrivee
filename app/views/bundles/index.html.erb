@@ -1,0 +1,29 @@
+<h1>Listing bundles</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Total cost</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bundles.each do |bundle| %>
+  <tr>
+    <td><%= bundle.name %></td>
+    <td><%= bundle.description %></td>
+    <td><%= "%.2f" % bundle.total_cost %></td>
+    <td><%= "%.2f" % bundle.price %></td>
+    <td><%= link_to 'Show', [@shop, bundle] %></td>
+    <td><%= link_to 'Edit', edit_shop_bundle_path(@shop, bundle) %></td>
+    <td><%= link_to 'Destroy', [@shop, bundle], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sale item', new_shop_bundle_path(@shop) %>

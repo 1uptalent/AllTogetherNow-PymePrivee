@@ -1,4 +1,4 @@
-class SaleItem < ActiveRecord::Base
+class Bundle < ActiveRecord::Base
   belongs_to :shop
   has_many  :products
   validates :shop, :name, :description, :price, :valid_from, :valid_until, :presence => true

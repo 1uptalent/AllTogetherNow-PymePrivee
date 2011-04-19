@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe "sale_items/show.html.erb" do
+describe "bundles/show.html.erb" do
   before(:each) do
     @shop = assign(:shop, stub_model(Shop))
-    @sale_item = assign(:sale_item, stub_model(SaleItem,
+    @bundle = assign(:bundle, stub_model(Bundle,
       :name => "Name",
       :description => "MyText",
       :total_cost => "9.99",
@@ -24,7 +24,7 @@ describe "sale_items/show.html.erb" do
   context "with products" do
     before do
       products = [mock_model(Product, :name => 'Jam', :description => "Banana", :picture => mock(Paperclip::Attachment, :url => ""))]
-      @sale_item.stub(:products).and_return(products)
+      @bundle.stub(:products).and_return(products)
     end
     
     it "should display them" do
@@ -35,8 +35,8 @@ describe "sale_items/show.html.erb" do
   
   context "when not current" do
     before do
-      @sale_item.stub(:valid_until).and_return(Date.today)
-      @sale_item.stub(:image).and_return(mock(Paperclip::Attachment, :url => ""))
+      @bundle.stub(:valid_until).and_return(Date.today)
+      @bundle.stub(:image).and_return(mock(Paperclip::Attachment, :url => ""))
     end
     
     it "should render a warning" do
@@ -50,7 +50,7 @@ describe "sale_items/show.html.erb" do
   context "with the shop owner's sale item" do
     it "should display a add product link" do
       render
-      assert_select "a[href=?]", add_product_to_sale_item_path(@sale_item)
+      assert_select "a[href=?]", add_product_to_bundle_path(@bundle)
     end
   end
 end

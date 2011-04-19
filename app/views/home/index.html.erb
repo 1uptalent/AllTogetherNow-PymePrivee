@@ -10,13 +10,13 @@
   <div class="picture-list">
     <div id="sales_list" class="clear">
       <h2>This just in!</h2>
-      <%= render :partial => "/sale_items/sales", :locals => { :sale_items => @sales } %>
+      <%= render :partial => "/bundles/sales", :locals => { :bundles => @sales } %>
     </div>
 
 
     <div id="shops_list">
       <h2>Nuevos Comercios</h2>
-      <ul class="sale_items">
+      <ul class="bundles">
       <% @shops.each_slice(3) do |row| %>
         <li>
           <ul>

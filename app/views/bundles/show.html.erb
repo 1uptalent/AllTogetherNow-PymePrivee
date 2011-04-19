@@ -1,19 +1,19 @@
 <div class="full_product">
   
-  <div class="full_bg_image" style="background-image: url(<%= @sale_item.image.url(:full) %>)"></div>
+  <div class="full_bg_image" style="background-image: url(<%= @bundle.image.url(:full) %>)"></div>
 
   <div class="product_data">
     <div id="product_links" class="clear">
       <%- the_owner_of(@shop) do -%>
-        <%= link_to 'Add another item', add_product_to_sale_item_path(@sale_item) %>
-        <%= link_to 'Edit', edit_shop_sale_item_path(@shop, @sale_item) %>
+        <%= link_to 'Add another item', add_product_to_bundle_path(@bundle) %>
+        <%= link_to 'Edit', edit_shop_bundle_path(@shop, @bundle) %>
       <%- end -%>
     </div>
 
-    <h1><%= @sale_item.name %></h1>
+    <h1><%= @bundle.name %></h1>
 
     <div class="description">
-      <%- @sale_item.description.split("\n").each do |p|-%>
+      <%- @bundle.description.split("\n").each do |p|-%>
         <p><%=p %></p>
       <%- end -%>
     </div>
@@ -22,17 +22,17 @@
        <!--
        <p>
          <b>Total cost:</b>
-         <%= @sale_item.price %>
+         <%= @bundle.price %>
       </p>
       
       <p>
          <b>You save:</b>
-         <%= @sale_item.price - @sale_item.total_cost %>
+         <%= @bundle.price - @bundle.total_cost %>
       </p>
       -->
       <p class="final">
         <b>Price:</b>
-        <%= @sale_item.price %>
+        <%= @bundle.price %>
       </p>
     </div>
 
@@ -41,16 +41,16 @@
       <fb:like href="" layout="box_count" show_faces="true" width="450" action="recommend" font="tahoma" colorscheme="dark"></fb:like>
     </div>
     
-    <%- unless @sale_item.current? -%>
+    <%- unless @bundle.current? -%>
     <p style="clear: both;">
       <div class="not_current">
-      <% if @sale_item.valid_until <= Date.today %>
+      <% if @bundle.valid_until <= Date.today %>
         <p>This items are no longer for sale, sorry.</p>
       <%- else -%>
-        <p>This item will be on sale starting on <%= l(@sale_item.valid_from, :format => :long) %></p>
+        <p>This item will be on sale starting on <%= l(@bundle.valid_from, :format => :long) %></p>
       <%- end -%>
-      <%- if @shop.sale_items.current.present? -%>
-        <p>Go to the <%= link_to "current sale", current_shop_sale_items_path(@shop) %>
+      <%- if @shop.bundles.current.present? -%>
+        <p>Go to the <%= link_to "current sale", current_shop_bundles_path(@shop) %>
         on <%= link_to @shop.name, @shop %></p>
       </div>
       <%- end -%>
@@ -58,7 +58,7 @@
     <%- end -%>
 </div>
 <div class="data" style="margin-top: 2em">
-  <%- @sale_item.products.each do |p| -%>
+  <%- @bundle.products.each do |p| -%>
     <h2><%=p.name %></h2>
     <%= image_tag p.picture.url(:medium), :style => "float: left; margin: 1em;" %>
     <%- p.description.split("\n").each do |paragraph| -%>

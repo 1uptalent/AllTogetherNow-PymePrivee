@@ -176,23 +176,23 @@ p {
   width: 900px;
   margin: 20px auto; }
 
-ul.sale_items {
+ul.bundles {
   margin: auto;
   list-style: none; }
-  ul.sale_items li {
+  ul.bundles li {
     margin-bottom: 40px; }
-    ul.sale_items li li {
+    ul.bundles li li {
       display: inline-block;
       width: 250px;
       margin: 0 1.5%; }
-  ul.sale_items .buy {
+  ul.bundles .buy {
     font-family: Quicksand;
     text-align: right;
     font-size: 1.2em; }
-    ul.sale_items .buy a {
+    ul.bundles .buy a {
       padding: 5px 1em;
       background-color: #452222; }
-  ul.sale_items .price {
+  ul.bundles .price {
     float: left;
     font-size: 1.2em; }
 

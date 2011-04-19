@@ -1,12 +1,12 @@
 class Payment < ActiveRecord::Base
   has_one    :user, :through => :payment_method
-  belongs_to :sale_item
+  belongs_to :bundle
   
   VALID_STATUSES = %w{user_requested confirmation_pending 
                       user_confirmed user_canceled gateway_confirmed 
                       confirmation_error completion_error}
   
-  validates :sale_item, :amount, :concept, :status, :presence => true
+  validates :bundle, :amount, :concept, :status, :presence => true
   validates :status, :inclusion => { :in => VALID_STATUSES }
   
   # Define search methods for every posible status

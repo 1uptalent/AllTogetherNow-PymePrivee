@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-describe "sale_items/index.html.erb" do
+describe "bundles/index.html.erb" do
   before(:each) do
     assign(:shop, mock_model(Shop))
-    assign(:sale_items, [
-      stub_model(SaleItem,
+    assign(:bundles, [
+      stub_model(Bundle,
         :name => "Name",
         :description => "MyText",
         :total_cost => "9.99",
         :price => "12.99"
       ),
-      stub_model(SaleItem,
+      stub_model(Bundle,
         :name => "Name",
         :description => "MyText",
         :total_cost => "9.99",
@@ -19,7 +19,7 @@ describe "sale_items/index.html.erb" do
     ])
   end
 
-  it "renders a list of sale_items" do
+  it "renders a list of bundles" do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2

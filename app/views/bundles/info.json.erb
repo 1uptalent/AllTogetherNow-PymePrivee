@@ -1,0 +1,10 @@
+<%= @callback_name %> ( 
+	{
+	  shop_name: '<%= @shop.name %>',
+		description: '<%= @bundle.name %>',
+		image: '<%= request.protocol + request.host + ":" + request.port.to_s + @bundle.image.url(:medium)%>',
+		buy_url: '<%= url_for buy_shop_bundle_url(@shop, @bundle)%>',
+		sale_url: '<%= url_for shop_bundle_url(@shop, @bundle, :format => 'json')%>',
+		price: <%= @bundle.price %>
+	} 
+)

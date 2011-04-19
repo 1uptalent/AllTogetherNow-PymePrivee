@@ -1,0 +1,18 @@
+<ul class="bundles">
+<% bundles.each_slice(3) do |row| %>
+  <li>
+    <ul>
+      <% row.each do |bundle| %>
+      <li>
+        <h3><%= link_to bundle.name, [bundle.shop, bundle] %></h3>
+        <div><%= link_to [bundle.shop, bundle] do -%>
+          <%= image_tag bundle.image.url(:medium) -%>
+        <%- end -%></div>
+        <p class="price"><%= "%.2f" % bundle.price %></p>
+        <div class="buy"><%= link_to 'Buy now!!!', buy_shop_bundle_url(bundle.shop, bundle), :class => "buy" %></div>
+      </li>
+      <%- end-%>
+    </ul>
+  </li>
+<% end %>
+</ul>

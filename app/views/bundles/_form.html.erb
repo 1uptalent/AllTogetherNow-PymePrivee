@@ -3,13 +3,13 @@
 $(function() {$('.calendar').datepicker( { dateFormat: "yy-mm-dd"}) })
 <%- end -%>
 <%- end -%>
-<%= form_for([@shop, @sale_item]) do |f| %>
-  <% if @sale_item.errors.any? %>
+<%= form_for([@shop, @bundle]) do |f| %>
+  <% if @bundle.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@sale_item.errors.count, "error") %> prohibited this sale_item from being saved:</h2>
+      <h2><%= pluralize(@bundle.errors.count, "error") %> prohibited this bundle from being saved:</h2>
 
       <ul>
-      <% @sale_item.errors.full_messages.each do |msg| %>
+      <% @bundle.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

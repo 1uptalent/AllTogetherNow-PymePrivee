@@ -27,12 +27,12 @@
 </div>
 <div class="picture-list">
 <h2>Currently selling</h2>
-  <%= render :partial => "/sale_items/sales", :locals => {:sale_items => [@shop.sale_items.current].compact } %>
+  <%= render :partial => "/bundles/sales", :locals => {:bundles => [@shop.bundles.current].compact } %>
 
   <h2>All offers</h2>
-  <%= render :partial => "/sale_items/sales", :locals => {:sale_items => @shop.sale_items } %>
+  <%= render :partial => "/bundles/sales", :locals => {:bundles => @shop.bundles } %>
 
   <%= the_owner_of(@shop) do -%>
-    <p><%= link_to "Add another item", new_shop_sale_item_path(@shop) %></p>
+    <p><%= link_to "Add another item", new_shop_bundle_path(@shop) %></p>
   <%- end -%>
 </div>

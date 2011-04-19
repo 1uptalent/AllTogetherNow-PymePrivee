@@ -1,13 +1,13 @@
 <%= stylesheet_link_tag "external" %>
 <div class="full_product">
   
-  <div style="width: 100%; height: 600px; -moz-background-size: cover;-o-background-size: cover;-webkit-background-size: cover;background: url(<%= "http://" + ActionController::Base.asset_host + @sale_item.image.url(:full) %>) center no-repeat"></div>
+  <div style="width: 100%; height: 600px; -moz-background-size: cover;-o-background-size: cover;-webkit-background-size: cover;background: url(<%= "http://" + ActionController::Base.asset_host + @bundle.image.url(:full) %>) center no-repeat"></div>
 
   <div class="product_data">
-    <h1><%= @sale_item.name %></h1>
+    <h1><%= @bundle.name %></h1>
 
     <div class="description">
-      <%- @sale_item.description.split("\n").each do |p|-%>
+      <%- @bundle.description.split("\n").each do |p|-%>
         <p><%=p %></p>
       <%- end -%>
     </div>
@@ -16,17 +16,17 @@
        <!--
        <p>
          <b>Total cost:</b>
-         <%= @sale_item.price %>
+         <%= @bundle.price %>
       </p>
       
       <p>
          <b>You save:</b>
-         <%= @sale_item.price - @sale_item.total_cost %>
+         <%= @bundle.price - @bundle.total_cost %>
       </p>
       -->
       <p class="final">
         <b>Price:</b>
-        <%= @sale_item.price %>
+        <%= @bundle.price %>
       </p>
     </div>
 
@@ -35,16 +35,16 @@
       <fb:like href="" layout="box_count" show_faces="true" width="450" action="recommend" font="tahoma" colorscheme="dark"></fb:like>
     </div>
     
-    <%- unless @sale_item.current? -%>
+    <%- unless @bundle.current? -%>
     <p style="clear: both;">
       <div class="not_current">
-      <% if @sale_item.valid_until <= Date.today %>
+      <% if @bundle.valid_until <= Date.today %>
         <p>This items are no longer for sale, sorry.</p>
       <%- else -%>
-        <p>This item will be on sale starting on <%= l(@sale_item.valid_from, :format => :long) %></p>
+        <p>This item will be on sale starting on <%= l(@bundle.valid_from, :format => :long) %></p>
       <%- end -%>
-      <%- if @shop.sale_items.current.present? -%>
-        <p>Go to the <%= link_to "current sale", current_shop_sale_items_path(@shop) %>
+      <%- if @shop.bundles.current.present? -%>
+        <p>Go to the <%= link_to "current sale", current_shop_bundles_path(@shop) %>
         on <%= link_to @shop.name, @shop %></p>
       </div>
       <%- end -%>
@@ -52,7 +52,7 @@
     <%- end -%>
 </div>
 <div class="data" style="margin-top: 2em">
-  <%- @sale_item.products.each do |p| -%>
+  <%- @bundle.products.each do |p| -%>
     <div>
     <h2><%=p.name %></h2>
     <%= image_tag p.picture.url(:medium), :style => "float: left; margin: 1em;" %>

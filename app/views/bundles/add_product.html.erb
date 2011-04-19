@@ -1,0 +1,11 @@
+<%= form_for @bundle, :url => update_products_for_bundle_path(@bundle), :html => { :method => "post"} do |f| %>
+  <ul>
+  <% @products.each do |p| %>
+    <li><%= check_box_tag "product_ids[]", p.id, 
+        @bundle.product_ids.include?(p.id), :id => "check_product_#{p.id}"  %>
+      <%= label_tag "check_product_#{p.id}", p.name %></li>
+  <% end %>
+  </ul>
+  <p>Or, <%= link_to "create a new product", new_shop_product_path(@bundle.shop) %></p>
+  <p><%= f.submit "Submit", :disable_with => 'Submiting...' %></p>
+<% end %>

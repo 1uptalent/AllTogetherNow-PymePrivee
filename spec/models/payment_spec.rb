@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe Payment do
   it { should have_db_column :concept }
-  it { should belong_to :sale_item }
+  it { should belong_to :bundle }
   it { should validate_presence_of :amount }
   it { should validate_presence_of :status }
-  # sale_item might be optional for suscription payments
+  # bundle might be optional for suscription payments
   
   it "with saved records, it should default to 'user_requested' status" do
-    sale_item = new_sale_item and sale_item.save!
+    bundle = new_bundle and bundle.save!
     
-    p = Payment.create(:sale_item => sale_item,
+    p = Payment.create(:bundle => bundle,
                        :amount => 12.34, :concept => "some reason")
     p.save!
     p.status.should == "user_requested"

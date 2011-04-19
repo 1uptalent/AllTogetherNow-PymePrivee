@@ -10,14 +10,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110403092917) do
+ActiveRecord::Schema.define(:version => 20110419152532) do
+
+  create_table "bundles", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "total_cost",  :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "price",       :precision => 10, :scale => 2, :default => 0.0
+    t.integer  "shop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "valid_from"
+    t.date     "valid_until"
+  end
 
   create_table "payments", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "sale_item_id"
+    t.integer  "bundle_id"
     t.string   "concept"
-    t.decimal  "amount",       :precision => 10, :scale => 2
-    t.string   "status",                                      :default => "user_requested"
+    t.decimal  "amount",     :precision => 10, :scale => 2
+    t.string   "status",                                    :default => "user_requested"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,23 +42,11 @@ ActiveRecord::Schema.define(:version => 20110403092917) do
     t.integer  "shop_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "sale_item_id"
+    t.integer  "bundle_id"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-  end
-
-  create_table "sale_items", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.decimal  "total_cost",  :precision => 10, :scale => 2, :default => 0.0
-    t.decimal  "price",       :precision => 10, :scale => 2, :default => 0.0
-    t.integer  "shop_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.date     "valid_from"
-    t.date     "valid_until"
   end
 
   create_table "shops", :force => true do |t|

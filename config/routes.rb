@@ -1,11 +1,11 @@
 Pymeprivee::Application.routes.draw do
 
-  get "/sale_items/:id/add_product" => "sale_items#add_product", :as => 'add_product_to_sale_item'
-  post "/sale_items/:id/add_product" => "sale_items#update_products", :as => 'update_products_for_sale_item'
+  get "/bundles/:id/add_product" => "bundles#add_product", :as => 'add_product_to_bundle'
+  post "/bundles/:id/add_product" => "bundles#update_products", :as => 'update_products_for_bundle'
   resources :shops do
     collection { get :my_shop }
     resources :products
-    resources :sale_items do
+    resources :bundles do
       collection { get :current }
       collection { get :all }
       member { get :buy }
@@ -87,6 +87,6 @@ Pymeprivee::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   
-  get '/widgets/shop/:shop_id/current' => "sale_items#info" 
+  get '/widgets/shop/:shop_id/current' => "bundles#info" 
   root :to => "home#index"
 end
