@@ -185,6 +185,9 @@ ul.bundles {
       display: inline-block;
       width: 250px;
       margin: 0 1.5%; }
+  ul.bundles .bundle a.medium img {
+    width: 250px;
+    height: 150px; }
   ul.bundles .buy {
     font-family: Quicksand;
     text-align: right;
