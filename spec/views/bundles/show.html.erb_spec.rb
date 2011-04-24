@@ -44,7 +44,10 @@ describe "bundles/show.html.erb" do
       assert_select "div[class=not_current]", :count => 1
     end
     
-    it "should not render the buy button"
+    it "should not render the buy button" do
+      render
+      assert_select "a[href=?]", %r{.*/buy}, :count => 0
+    end
   end
   
   context "with the shop owner's sale item" do
